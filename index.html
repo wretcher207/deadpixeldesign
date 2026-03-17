@@ -50,7 +50,7 @@
   }
 
   /* ─────────────────────────────────────── */
-  /* FIXED LAYERS (persist across all scroll) */
+  /* FIXED LAYERS                             */
   /* ─────────────────────────────────────── */
 
   .grain {
@@ -399,8 +399,6 @@
   /* ABOUT / MANIFESTO                        */
   /* ─────────────────────────────────────── */
 
-  #about {}
-
   .manifesto-body {
     max-width: 640px;
   }
@@ -440,8 +438,6 @@
   /* ─────────────────────────────────────── */
   /* SERVICES                                 */
   /* ─────────────────────────────────────── */
-
-  #services {}
 
   .services-grid {
     display: grid;
@@ -507,8 +503,6 @@
   /* PORTFOLIO                                */
   /* ─────────────────────────────────────── */
 
-  #portfolio {}
-
   .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -531,7 +525,6 @@
     transform: translateY(-4px);
   }
 
-  /* Screenshot frame */
   .card-img-wrap {
     position: relative;
     width: 100%;
@@ -555,7 +548,6 @@
     transform: scale(1.03);
   }
 
-  /* Grain overlay on images */
   .card-img-wrap::after {
     content: '';
     position: absolute;
@@ -567,7 +559,6 @@
     z-index: 2;
   }
 
-  /* Vignette on image */
   .card-img-wrap::before {
     content: '';
     position: absolute;
@@ -946,6 +937,38 @@
         </div>
       </a>
 
+      <a href="https://amoebaz.com" target="_blank" rel="noopener" class="portfolio-card">
+        <div class="card-img-wrap">
+          <img
+            src="https://image.thum.io/get/width/900/crop/560/https://amoebaz.com"
+            alt="Amoebaz music site"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Web Design · Music</div>
+          <div class="card-title">Amoebaz</div>
+          <p class="card-desc">Full artist site for a local underground hip hop duo. Discography, streaming links, merch store, and an AI-powered chatbot trained on the band's lore.</p>
+          <div class="card-link">Visit site</div>
+        </div>
+      </a>
+
+      <a href="https://stellular-twilight.netlify.app" target="_blank" rel="noopener" class="portfolio-card">
+        <div class="card-img-wrap">
+          <img
+            src="https://image.thum.io/get/width/900/crop/560/https://stellular-twilight.netlify.app"
+            alt="Lumina Systems AI lead generation platform"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-body">
+          <div class="card-tag">AI · Automation · Spec</div>
+          <div class="card-title">Lumina Systems</div>
+          <p class="card-desc">Spec build. AI voice agent platform for four industry verticals — legal, trades, property, and medical. Full ROI calculator, pricing tiers, and demo booking flow.</p>
+          <div class="card-link">See demo</div>
+        </div>
+      </a>
+
     </div>
   </section>
 
@@ -959,9 +982,19 @@
       Got a project, a half-finished idea, or a website you're quietly embarrassed about.
       We can work with all three.
     </p>
-    
-    <a href="/cdn-cgi/l/email-protection#7601041302151e1312444641361f151a1903125815191b" class="contact-link"><span class="__cf_email__" data-cfemail="3740455243545f5253050700775e545b5842531954585a">[email&#160;protected]</span></a>
+    <a href="mailto:hello@deadpixeldesign.com" class="contact-link">hello@deadpixeldesign.com</a>
   </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-brand">Dead Pixel Design</div>
+    <div class="footer-tagline">We don't optimize. We haunt.</div>
+    <div class="footer-pixel">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </footer>
 
 </body>
 </html>
