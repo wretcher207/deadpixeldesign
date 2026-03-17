@@ -435,6 +435,32 @@
     margin: 2.2rem 0;
   }
 
+  .manifesto-byline {
+    margin-top: 2.8rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(90, 85, 101, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .manifesto-byline .byline-name {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+
+  .manifesto-byline .byline-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--muted-light);
+    text-transform: uppercase;
+  }
+
   /* ─────────────────────────────────────── */
   /* SERVICES                                 */
   /* ─────────────────────────────────────── */
@@ -497,6 +523,75 @@
     line-height: 1.8;
     color: var(--muted-light);
     letter-spacing: 0.02em;
+  }
+
+  /* ─────────────────────────────────────── */
+  /* PROCESS                                  */
+  /* ─────────────────────────────────────── */
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
+    border: 1px solid rgba(90, 85, 101, 0.2);
+  }
+
+  .process-step {
+    padding: 2.4rem 2rem;
+    border-right: 1px solid rgba(90, 85, 101, 0.2);
+    border-bottom: 1px solid rgba(90, 85, 101, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s ease;
+  }
+
+  .process-step:hover {
+    background: rgba(184, 169, 201, 0.04);
+  }
+
+  .process-step::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px; height: 0;
+    background: var(--accent-warm);
+    transition: height 0.35s ease;
+  }
+
+  .process-step:hover::before {
+    height: 100%;
+  }
+
+  .process-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    opacity: 0.5;
+  }
+
+  .process-name {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg);
+    margin-bottom: 0.8rem;
+  }
+
+  .process-desc {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    line-height: 1.8;
+    color: var(--muted-light);
+    letter-spacing: 0.02em;
+  }
+
+  .process-desc em {
+    font-style: normal;
+    color: var(--accent);
   }
 
   /* ─────────────────────────────────────── */
@@ -770,12 +865,14 @@
     .services-hint span { margin: 0 0.4em; }
     .services-hint { font-size: 0.5rem; }
     .services-grid { grid-template-columns: 1fr 1fr; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
     .portfolio-grid { grid-template-columns: 1fr; }
     footer { justify-content: center; text-align: center; }
   }
 
   @media (max-width: 420px) {
     .services-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -845,6 +942,10 @@
         We handle web design, social media, chatbots, and digital strategy.
         Small teams. Real work. No account managers explaining your brand back to you.
       </p>
+      <div class="manifesto-byline">
+        <div class="byline-name">David W. Russell III</div>
+        <div class="byline-title">Founder &amp; Creative Director — Dead Pixel Design</div>
+      </div>
     </div>
   </section>
 
@@ -877,6 +978,40 @@
         <div class="service-num">04</div>
         <div class="service-name">Digital Strategy</div>
         <p class="service-desc">A direction, not a dashboard. We figure out where you're going and what it takes to get there — then we help build the thing that gets you there.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="full-rule"><hr></div>
+
+  <!-- ── PROCESS ── -->
+  <section id="process">
+    <div class="section-label">How We Work</div>
+    <div class="process-grid">
+
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-name">We Show Up With Something</div>
+        <p class="process-desc">Before the first conversation, we do the homework. Depending on what we know about your business and your industry, we arrive with a <em>working proof of concept already built</em> — not a mood board, not a proposal deck. Something you can click through and react to on the spot.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-name">We Listen Before We Build</div>
+        <p class="process-desc">What have you tried that didn't work? What does success actually look like for you — not in marketing language, in real terms? What are your time and budget constraints? We ask the questions most designers skip, because the answers change everything about what gets built.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-name">We Move Fast and Stay Close</div>
+        <p class="process-desc">Once we're aligned, we build quickly. You'll hear from us throughout — not with status updates that waste your time, but with decisions that need your input. We're communicative without being needy. You stay informed without babysitting the project.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div class="process-name">We Get It Right</div>
+        <p class="process-desc">The first delivery is a starting point, not a finished product. We present, you respond, we adjust with surgical precision. No arguing about vision. No scope creep. Just the work, refined until it's exactly what it needs to be — then handed off clean.</p>
       </div>
 
     </div>
@@ -982,7 +1117,7 @@
       Got a project, a half-finished idea, or a website you're quietly embarrassed about.
       We can work with all three.
     </p>
-    <a href="mailto:hello@deadpixeldesign.com" class="contact-link">hello@deadpixeldesign.com</a>
+    <a href="mailto:david@deadpixeldesign.com" class="contact-link">david@deadpixeldesign.com</a>
   </section>
 
   <!-- ── FOOTER ── -->
