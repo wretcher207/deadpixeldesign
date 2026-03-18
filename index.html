@@ -604,6 +604,7 @@
     gap: 2rem;
   }
 
+  /* Shared card shell — used by both <a> and <div> variants */
   .portfolio-card {
     display: block;
     text-decoration: none;
@@ -616,6 +617,22 @@
   }
 
   .portfolio-card:hover {
+    border-color: rgba(184, 169, 201, 0.4);
+    transform: translateY(-4px);
+  }
+
+  /* <div> variant — same visual, no anchor behaviour */
+  .portfolio-card-static {
+    display: block;
+    color: inherit;
+    position: relative;
+    border: 1px solid rgba(90, 85, 101, 0.2);
+    overflow: hidden;
+    transition: border-color 0.4s ease, transform 0.4s ease;
+    background: rgba(10, 10, 12, 0.6);
+  }
+
+  .portfolio-card-static:hover {
     border-color: rgba(184, 169, 201, 0.4);
     transform: translateY(-4px);
   }
@@ -638,7 +655,8 @@
     transition: filter 0.5s ease, transform 0.5s ease;
   }
 
-  .portfolio-card:hover .card-img-wrap img {
+  .portfolio-card:hover .card-img-wrap img,
+  .portfolio-card-static:hover .card-img-wrap img {
     filter: saturate(0.9) brightness(1);
     transform: scale(1.03);
   }
@@ -706,11 +724,13 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
+    text-decoration: none;
     opacity: 0.7;
     transition: opacity 0.3s ease, gap 0.3s ease;
   }
 
-  .portfolio-card:hover .card-link {
+  .portfolio-card:hover .card-link,
+  .portfolio-card-static:hover .card-link {
     opacity: 1;
     gap: 0.7rem;
   }
@@ -724,6 +744,14 @@
   /* REAPACK BUTTON                           */
   /* ─────────────────────────────────────── */
 
+  .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-top: 0.2rem;
+  }
+
   .reapack-btn {
     display: inline-flex;
     align-items: center;
@@ -736,11 +764,11 @@
     background: transparent;
     border: 1px solid rgba(90, 85, 101, 0.35);
     padding: 0.55rem 0.9rem;
-    margin-bottom: 1.1rem;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     transition: color 0.3s ease, border-color 0.3s ease;
+    white-space: nowrap;
   }
 
   .reapack-btn::before {
@@ -914,6 +942,7 @@
     .process-grid { grid-template-columns: 1fr 1fr; }
     .portfolio-grid { grid-template-columns: 1fr; }
     footer { justify-content: center; text-align: center; }
+    .card-actions { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
   }
 
   @media (max-width: 420px) {
@@ -1086,8 +1115,8 @@
         </div>
       </a>
 
-      <!-- ── WRETCHER CARD ── -->
-      <a href="https://wretcher207.netlify.app" target="_blank" rel="noopener noreferrer" class="portfolio-card">
+      <!-- ── WRETCHER — div variant so button and link coexist cleanly ── -->
+      <div class="portfolio-card-static">
         <div class="card-img-wrap">
           <img
             src="https://i.imgur.com/q5n4wa2.jpg"
@@ -1099,16 +1128,25 @@
           <div class="card-tag">Web Design · Music</div>
           <div class="card-title">Wretcher</div>
           <p class="card-desc">Instrumental metal project. Dark, heavy, and linked to every platform it belongs on — Spotify, Bandcamp, YouTube, and beyond.</p>
-          <button
-            class="reapack-btn"
-            id="reapack-copy-btn"
-            aria-label="Copy ReaPack repository link to clipboard"
-          >
-            ⬡ Copy ReaPack Link
-          </button>
-          <div class="card-link">Visit site</div>
+          <div class="card-actions">
+            <button
+              class="reapack-btn"
+              id="reapack-copy-btn"
+              aria-label="Copy ReaPack repository link to clipboard"
+            >
+              ⬡ Copy ReaPack Link
+            </button>
+            
+              href="https://wretcher207.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card-link"
+            >
+              Visit site
+            </a>
+          </div>
         </div>
-      </a>
+      </div>
 
       <a href="https://davidrussell112688-png.github.io/minerva-demo/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
         <div class="card-img-wrap">
@@ -1194,11 +1232,7 @@
 
       if (!btn) return;
 
-      btn.addEventListener('click', function (e) {
-        // Prevent the parent <a> from navigating when the button is clicked
-        e.preventDefault();
-        e.stopPropagation();
-
+      btn.addEventListener('click', function () {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(REAPACK_URL).then(function () {
             showCopied();
@@ -1223,7 +1257,6 @@
       }
 
       function fallbackCopy() {
-        // prompt() is the last-resort fallback for HTTP or denied permissions
         window.prompt('Copy this ReaPack URL:', REAPACK_URL);
       }
     })();
