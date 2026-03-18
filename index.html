@@ -721,6 +721,52 @@
   }
 
   /* ─────────────────────────────────────── */
+  /* REAPACK BUTTON                           */
+  /* ─────────────────────────────────────── */
+
+  .reapack-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    background: transparent;
+    border: 1px solid rgba(90, 85, 101, 0.35);
+    padding: 0.55rem 0.9rem;
+    margin-bottom: 1.1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .reapack-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: rgba(184, 169, 201, 0.06);
+    transition: left 0.3s ease;
+  }
+
+  .reapack-btn:hover::before {
+    left: 0;
+  }
+
+  .reapack-btn:hover {
+    color: var(--accent);
+    border-color: rgba(184, 169, 201, 0.4);
+  }
+
+  .reapack-btn.copied {
+    color: var(--accent);
+    border-color: rgba(184, 169, 201, 0.5);
+  }
+
+  /* ─────────────────────────────────────── */
   /* CONTACT                                  */
   /* ─────────────────────────────────────── */
 
@@ -1024,7 +1070,7 @@
     <div class="section-label">Work</div>
     <div class="portfolio-grid">
 
-      <a href="https://freedompainting.us" target="_blank" rel="noopener" class="portfolio-card">
+      <a href="https://freedompainting.us" target="_blank" rel="noopener noreferrer" class="portfolio-card">
         <div class="card-img-wrap">
           <img
             src="https://image.thum.io/get/width/900/crop/560/https://freedompainting.us"
@@ -1040,11 +1086,12 @@
         </div>
       </a>
 
-      <a href="https://wretcher207.netlify.app" target="_blank" rel="noopener" class="portfolio-card">
+      <!-- ── WRETCHER CARD ── -->
+      <a href="https://wretcher207.netlify.app" target="_blank" rel="noopener noreferrer" class="portfolio-card">
         <div class="card-img-wrap">
           <img
-            src="https://image.thum.io/get/width/900/crop/560/https://wretcher207.netlify.app"
-            alt="Wretcher music project"
+            src="https://i.imgur.com/q5n4wa2.jpg"
+            alt="Wretcher — Naming Things To Survive Them single artwork"
             loading="lazy"
           >
         </div>
@@ -1052,11 +1099,18 @@
           <div class="card-tag">Web Design · Music</div>
           <div class="card-title">Wretcher</div>
           <p class="card-desc">Instrumental metal project. Dark, heavy, and linked to every platform it belongs on — Spotify, Bandcamp, YouTube, and beyond.</p>
+          <button
+            class="reapack-btn"
+            id="reapack-copy-btn"
+            aria-label="Copy ReaPack repository link to clipboard"
+          >
+            ⬡ Copy ReaPack Link
+          </button>
           <div class="card-link">Visit site</div>
         </div>
       </a>
 
-      <a href="https://davidrussell112688-png.github.io/minerva-demo/" target="_blank" rel="noopener" class="portfolio-card">
+      <a href="https://davidrussell112688-png.github.io/minerva-demo/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
         <div class="card-img-wrap">
           <img
             src="https://image.thum.io/get/width/900/crop/560/https://davidrussell112688-png.github.io/minerva-demo/"
@@ -1072,7 +1126,7 @@
         </div>
       </a>
 
-      <a href="https://amoebaz.com" target="_blank" rel="noopener" class="portfolio-card">
+      <a href="https://amoebaz.com" target="_blank" rel="noopener noreferrer" class="portfolio-card">
         <div class="card-img-wrap">
           <img
             src="https://image.thum.io/get/width/900/crop/560/https://amoebaz.com"
@@ -1088,7 +1142,7 @@
         </div>
       </a>
 
-      <a href="https://stellular-twilight.netlify.app" target="_blank" rel="noopener" class="portfolio-card">
+      <a href="https://stellular-twilight.netlify.app" target="_blank" rel="noopener noreferrer" class="portfolio-card">
         <div class="card-img-wrap">
           <img
             src="https://image.thum.io/get/width/900/crop/560/https://stellular-twilight.netlify.app"
@@ -1130,6 +1184,50 @@
       <span></span>
     </div>
   </footer>
+
+  <!-- ── SCRIPTS ── -->
+  <script>
+    (function () {
+      var REAPACK_URL = 'https://raw.githubusercontent.com/wretcher207/Dehumanizer-Pro/main/index.xml';
+      var btn = document.getElementById('reapack-copy-btn');
+      var resetTimer = null;
+
+      if (!btn) return;
+
+      btn.addEventListener('click', function (e) {
+        // Prevent the parent <a> from navigating when the button is clicked
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(REAPACK_URL).then(function () {
+            showCopied();
+          }).catch(function () {
+            fallbackCopy();
+          });
+        } else {
+          fallbackCopy();
+        }
+      });
+
+      function showCopied() {
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        btn.disabled = true;
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+          btn.textContent = '⬡ Copy ReaPack Link';
+          btn.classList.remove('copied');
+          btn.disabled = false;
+        }, 2000);
+      }
+
+      function fallbackCopy() {
+        // prompt() is the last-resort fallback for HTTP or denied permissions
+        window.prompt('Copy this ReaPack URL:', REAPACK_URL);
+      }
+    })();
+  </script>
 
 </body>
 </html>
