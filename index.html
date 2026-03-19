@@ -31,13 +31,14 @@
   }
 
   :root {
-    --bg: #0a0a0c;
-    --fg: #e8e4df;
-    --accent: #b8a9c9;
-    --accent-warm: #c9a9a0;
-    --muted: #5a5565;
-    --muted-light: #7a7085;
-    --grain-opacity: 0.08;
+    --bg: #0a0a0a;
+    --fg: #f0eeec;
+    --accent: #c8102e;
+    --accent-warm: #8b0000;
+    --accent-glow: #e8320a;
+    --muted: #4a4a4a;
+    --muted-light: #7a7a7a;
+    --grain-opacity: 0.07;
     --section-pad: clamp(5rem, 12vw, 9rem);
   }
 
@@ -107,14 +108,14 @@
 
   .haze-blob:nth-child(1) {
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(184,169,201,0.15), transparent 70%);
+    background: radial-gradient(circle, rgba(200,16,46,0.09), transparent 70%);
     top: -10%; left: -10%;
     animation-delay: 0s;
   }
 
   .haze-blob:nth-child(2) {
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(201,169,160,0.12), transparent 70%);
+    background: radial-gradient(circle, rgba(139,0,0,0.08), transparent 70%);
     bottom: -15%; right: -5%;
     animation-delay: -4s;
     animation-duration: 15s;
@@ -122,7 +123,7 @@
 
   .haze-blob:nth-child(3) {
     width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(140,130,170,0.1), transparent 70%);
+    background: radial-gradient(circle, rgba(232,50,10,0.06), transparent 70%);
     top: 40%; left: 50%;
     animation-delay: -8s;
     animation-duration: 18s;
@@ -206,7 +207,7 @@
     text-transform: uppercase;
     line-height: 0.9;
     position: relative;
-    color: var(--fg);
+    color: #8c8885;
     opacity: 0;
     animation: fadeInSlow 2.5s ease-out 0.3s forwards;
   }
@@ -224,18 +225,18 @@
 
   .brand::before {
     color: var(--accent);
-    opacity: 0.3;
+    opacity: 0;
     transform: translate(-2px, 1px);
-    filter: blur(1px);
-    animation: chromaShift 8s ease-in-out infinite;
+    filter: blur(2px);
+    animation: none;
   }
 
   .brand::after {
     color: var(--accent-warm);
-    opacity: 0.2;
+    opacity: 0.08;
     transform: translate(2px, -1px);
-    filter: blur(1px);
-    animation: chromaShift 8s ease-in-out infinite reverse;
+    filter: blur(3px);
+    animation: none;
   }
 
   @keyframes chromaShift {
@@ -392,7 +393,7 @@
 
   .full-rule hr {
     border: none;
-    border-top: 1px solid rgba(90, 85, 101, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   /* ─────────────────────────────────────── */
@@ -427,10 +428,9 @@
     font-family: 'Space Mono', monospace;
     font-size: clamp(0.9rem, 1.6vw, 1.1rem);
     color: var(--accent);
-    opacity: 0.85;
     letter-spacing: 0.03em;
     line-height: 1.7;
-    border-left: 1px solid var(--accent);
+    border-left: 2px solid var(--accent);
     padding-left: 1.4rem;
     margin: 2.2rem 0;
   }
@@ -438,7 +438,7 @@
   .manifesto-byline {
     margin-top: 2.8rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(90, 85, 101, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -469,20 +469,20 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 0;
-    border: 1px solid rgba(90, 85, 101, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .service-card {
     padding: 2.2rem 2rem;
-    border-right: 1px solid rgba(90, 85, 101, 0.2);
-    border-bottom: 1px solid rgba(90, 85, 101, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     position: relative;
     overflow: hidden;
     transition: background 0.4s ease;
   }
 
   .service-card:hover {
-    background: rgba(184, 169, 201, 0.04);
+    background: rgba(200, 16, 46, 0.04);
   }
 
   .service-card::before {
@@ -533,20 +533,20 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 0;
-    border: 1px solid rgba(90, 85, 101, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .process-step {
     padding: 2.4rem 2rem;
-    border-right: 1px solid rgba(90, 85, 101, 0.2);
-    border-bottom: 1px solid rgba(90, 85, 101, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     position: relative;
     overflow: hidden;
     transition: background 0.4s ease;
   }
 
   .process-step:hover {
-    background: rgba(184, 169, 201, 0.04);
+    background: rgba(200, 16, 46, 0.04);
   }
 
   .process-step::before {
@@ -609,14 +609,14 @@
     text-decoration: none;
     color: inherit;
     position: relative;
-    border: 1px solid rgba(90, 85, 101, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     overflow: hidden;
     transition: border-color 0.4s ease, transform 0.4s ease;
-    background: rgba(10, 10, 12, 0.6);
+    background: rgba(10, 10, 10, 0.6);
   }
 
   .portfolio-card:hover {
-    border-color: rgba(184, 169, 201, 0.4);
+    border-color: rgba(200, 16, 46, 0.5);
     transform: translateY(-4px);
   }
 
@@ -624,14 +624,14 @@
     display: block;
     color: inherit;
     position: relative;
-    border: 1px solid rgba(90, 85, 101, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     overflow: hidden;
     transition: border-color 0.4s ease, transform 0.4s ease;
-    background: rgba(10, 10, 12, 0.6);
+    background: rgba(10, 10, 10, 0.6);
   }
 
   .portfolio-card-static:hover {
-    border-color: rgba(184, 169, 201, 0.4);
+    border-color: rgba(200, 16, 46, 0.5);
     transform: translateY(-4px);
   }
 
@@ -640,7 +640,7 @@
     width: 100%;
     padding-top: 62%;
     overflow: hidden;
-    background: #0f0f12;
+    background: #0a0a0a;
   }
 
   .card-img-wrap img {
@@ -721,15 +721,14 @@
     font-size: 0.52rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--muted-light);
     text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.3s ease, gap 0.3s ease;
+    transition: color 0.3s ease, gap 0.3s ease;
   }
 
   .portfolio-card:hover .card-link,
   .portfolio-card-static:hover .card-link {
-    opacity: 1;
+    color: var(--accent);
     gap: 0.7rem;
   }
 
@@ -760,7 +759,7 @@
     text-transform: uppercase;
     color: var(--muted-light);
     background: transparent;
-    border: 1px solid rgba(90, 85, 101, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     padding: 0.55rem 0.9rem;
     cursor: pointer;
     position: relative;
@@ -774,7 +773,7 @@
     position: absolute;
     top: 0; left: -100%;
     width: 100%; height: 100%;
-    background: rgba(184, 169, 201, 0.06);
+    background: rgba(200, 16, 46, 0.06);
     transition: left 0.3s ease;
   }
 
@@ -784,12 +783,12 @@
 
   .reapack-btn:hover {
     color: var(--accent);
-    border-color: rgba(184, 169, 201, 0.4);
+    border-color: rgba(200, 16, 46, 0.4);
   }
 
   .reapack-btn.copied {
     color: var(--accent);
-    border-color: rgba(184, 169, 201, 0.5);
+    border-color: rgba(200, 16, 46, 0.5);
   }
 
   /* ─────────────────────────────────────── */
@@ -852,7 +851,7 @@
     text-transform: uppercase;
     color: var(--accent);
     text-decoration: none;
-    border: 1px solid rgba(184, 169, 201, 0.35);
+    border: 1px solid rgba(200, 16, 46, 0.4);
     padding: 1rem 2.4rem;
     position: relative;
     overflow: hidden;
@@ -864,14 +863,14 @@
     position: absolute;
     top: 0; left: -100%;
     width: 100%; height: 100%;
-    background: rgba(184, 169, 201, 0.08);
+    background: rgba(200, 16, 46, 0.08);
     transition: left 0.35s ease;
   }
 
   .contact-link:hover::before { left: 0; }
   .contact-link:hover {
     color: var(--fg);
-    border-color: rgba(184, 169, 201, 0.7);
+    border-color: rgba(200, 16, 46, 0.8);
   }
 
   /* ─────────────────────────────────────── */
@@ -889,7 +888,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
-    border-top: 1px solid rgba(90, 85, 101, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .footer-brand {
@@ -906,8 +905,7 @@
     font-family: 'Space Mono', monospace;
     font-size: 0.55rem;
     letter-spacing: 0.2em;
-    color: var(--accent);
-    opacity: 0.5;
+    color: var(--muted-light);
     text-align: center;
   }
 
@@ -926,6 +924,32 @@
 
   .footer-pixel span:nth-child(2) { animation-delay: 1.5s; }
   .footer-pixel span:nth-child(3) { animation-delay: 3.1s; }
+
+  .footer-contact {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    color: var(--muted-light);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-link {
+    color: var(--muted-light);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .footer-link:hover {
+    color: var(--accent);
+  }
+
+  .footer-sep {
+    color: var(--muted);
+    opacity: 0.5;
+  }
 
   /* ─────────────────────────────────────── */
   /* RESPONSIVE                               */
@@ -1061,6 +1085,30 @@
         <div class="service-num">04</div>
         <div class="service-name">Digital Strategy</div>
         <p class="service-desc">A direction, not a dashboard. We figure out where you're going and what it takes to get there — then we help build the thing that gets you there.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-name">Content Production</div>
+        <p class="service-desc">Photo editing, video editing, and asset preparation for people who create constantly and don't have time to polish everything themselves. We handle the gap between raw and ready.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-name">DM Management</div>
+        <p class="service-desc">Your inbox is a sales channel. We monitor it, respond in your voice, and make sure nothing falls through the cracks — without making it sound like a bot wrote it.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">07</div>
+        <div class="service-name">Shoot Coordination</div>
+        <p class="service-desc">Concept, logistics, brief. We handle the pre-production layer so that when the camera goes up, there's a plan behind it — not a vibe and a prayer.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">08</div>
+        <div class="service-name">AI Integration</div>
+        <p class="service-desc">Automation that earns its keep. Scheduled posting, AI-assisted workflows, and smart tools wired into the way you already work — not bolted on top of it.</p>
       </div>
 
     </div>
@@ -1204,6 +1252,22 @@
         </div>
       </a>
 
+      <a href="https://wretcher207.github.io/meghanx/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
+        <div class="card-img-wrap">
+          <img
+            src="https://image.thum.io/get/width/900/crop/560/https://wretcher207.github.io/meghanx/"
+            alt="Meghan X creator economy personal brand spec"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Creator Economy · Personal Brand · Spec</div>
+          <div class="card-title">Meghan X</div>
+          <p class="card-desc">Spec build. Full creator brand and management system — content calendar, DM pipeline, shoot coordination, and monetization strategy wrapped in a cohesive visual identity.</p>
+          <div class="card-link">See spec</div>
+        </div>
+      </a>
+
     </div>
   </section>
 
@@ -1215,15 +1279,20 @@
     <h2 class="contact-heading">Make something<br>worth staring at.</h2>
     <p class="contact-sub">
       Got a project, a half-finished idea, or a website you're quietly embarrassed about.
-      We can work with all three.
+      Send me what you're working with — I'll tell you exactly what I'd do with it.
     </p>
-    <a href="mailto:david@deadpixeldesign.com" class="contact-link">david@deadpixeldesign.com</a>
+    <a href="mailto:david@deadpixeldesign.com" class="contact-link">Send me what you've got</a>
   </section>
 
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-brand">Dead Pixel Design</div>
     <div class="footer-tagline">We don't optimize. We haunt.</div>
+    <div class="footer-contact">
+      <a href="mailto:david@deadpixeldesign.com" class="footer-link">david@deadpixeldesign.com</a>
+      <span class="footer-sep">·</span>
+      <a href="tel:+12076948691" class="footer-link">(207) 694-8691</a>
+    </div>
     <div class="footer-pixel">
       <span></span>
       <span></span>
