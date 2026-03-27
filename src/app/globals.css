@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg-primary: #0a0a0a;
+  --color-bg-elevated: #111111;
+  --color-bg-section: #080808;
+  --color-text-primary: #d0d0d0;
+  --color-text-secondary: #787878;
+  --color-text-dim: #444444;
+  --color-accent: #c49a2a;
+  --color-accent-dim: #8a6c1e;
+  --color-accent-glow: rgba(196, 154, 42, 0.15);
+  --font-display: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+/* ── Base ──────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg-primary);
+}
+
+/* ── Grain Overlay ─────────────────────────────────── */
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+}
+
+.grain-overlay::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  animation: grain-drift 8s steps(10) infinite;
+}
+
+@keyframes grain-drift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -15%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(3%, -15%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* ── Vignette ──────────────────────────────────────── */
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* ── Typography Utilities ──────────────────────────── */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* ── Scroll Indicator ──────────────────────────────── */
+
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.7; transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scroll-pulse 2.5s ease-in-out infinite;
+}
+
+/* ── Section Spacing ───────────────────────────────── */
+
+.section-padding {
+  padding-top: clamp(4rem, 10vh, 8rem);
+  padding-bottom: clamp(4rem, 10vh, 8rem);
+}
