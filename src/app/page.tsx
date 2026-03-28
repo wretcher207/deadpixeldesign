@@ -1,23 +1,46 @@
-import Hero from "@/components/Hero";
-import Navigation from "@/components/Navigation";
-import Manifesto from "@/components/Manifesto";
-import Work from "@/components/Work";
-import Arsenal from "@/components/Arsenal";
-import Services from "@/components/Services";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+import HomeContent from "./HomeContent";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Dead Pixel Design — Web Design, Audio Engineering & Creative Technology | Maine",
+  description:
+    "Web design, audio engineering, mixing, mastering, MIDI programming, and AI automation from Maine. Custom websites for small businesses and musicians. Free consultation.",
+  openGraph: {
+    title: "Dead Pixel Design — We don't optimize. We haunt.",
+    description:
+      "Web design, audio engineering, mixing, mastering, and creative technology from Maine. Custom sites, real tools, no templates.",
+    url: "https://deadpixeldesign.com",
+    images: [
+      {
+        url: "/images/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "Dead Pixel Design — Web Design & Audio Engineering from Maine",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dead Pixel Design — We don't optimize. We haunt.",
+    description:
+      "Web design, audio engineering, and creative technology from Maine. Custom sites, real tools, no templates.",
+    images: ["/images/og-image.webp"],
+  },
+  alternates: {
+    canonical: "https://deadpixeldesign.com",
+  },
+};
+
+export default function HomePage() {
   return (
-    <main>
-      <Navigation />
-      <Hero />
-      <Manifesto />
-      <Work />
-      <Arsenal />
-      <Services />
-      <Contact />
-      <Footer />
-    </main>
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://deadpixeldesign.com" },
+        ]}
+      />
+      <HomeContent />
+    </>
   );
 }
