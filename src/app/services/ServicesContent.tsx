@@ -1,79 +1,209 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import PageShell from "@/components/layout/PageShell";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 
-const SERVICES = [
+const WEB_PACKAGES = [
   {
-    label: "WEB DESIGN & DEVELOPMENT",
-    title: "Websites That Work As Hard As You Do",
-    description:
-      "Not templates. Not drag-and-drop. Custom-built sites designed around what your business actually needs — whether that's turning visitors into phone calls, showcasing a portfolio, or selling a product. Every site is fast, mobile-ready, and built with search engines in mind from day one.",
+    name: "Starter",
+    price: "$800–$1,000",
     details: [
-      "Custom design tailored to your brand and audience",
-      "Mobile-first responsive development",
-      "SEO baked into the foundation — not bolted on after",
-      "Conversion-focused layouts that drive real results",
-      "Ongoing support and maintenance available",
+      "3 to 5 pages, mobile friendly",
+      "Basic SEO setup",
+      "Contact form",
+      "Google Business Profile setup",
+      "1 revision round",
     ],
-    forWho: "Small businesses, contractors, restaurants, musicians, creators",
+    forWho: "Solo tradespeople, small local businesses, first time website owners",
   },
   {
-    label: "MIXING & MASTERING",
-    title: "Your Tracks, Finished Right",
-    description:
-      "You've written the songs. You've tracked the parts. Now you need someone who understands how to make it all hit — without losing what made it yours in the first place. Whether it's a single, an EP, or a full album, every mix gets the attention it deserves.",
+    name: "Standard",
+    price: "$1,700–$2,500",
     details: [
-      "Full mixing from stems or multitrack sessions",
-      "Stereo mastering for streaming and physical release",
-      "Genre-aware processing — not a one-size-fits-all chain",
-      "Revision rounds included — we dial it in together",
-      "Delivered in all formats you need (WAV, MP3, FLAC)",
+      "6 to 8 pages, mobile friendly",
+      "Full SEO setup",
+      "Copywriting help",
+      "Photo optimization",
+      "Google Analytics connected",
+      "2 revision rounds",
     ],
-    forWho: "Bands, solo artists, producers, podcasters",
+    forWho: "Dental practices, contractors, auto repair, tourism businesses",
   },
   {
-    label: "MIDI PROGRAMMING",
-    title: "Drums That Don't Sound Programmed",
-    description:
-      "If you've ever fought with a drum plugin trying to make it feel human, you know the pain. We program MIDI drums that groove, breathe, and hit like a real player. Built in REAPER with custom humanization tools we developed in-house.",
+    name: "Premium",
+    price: "$3,500–$5,000",
     details: [
-      "Full drum programming from scratch to your song structure",
-      "Humanized timing, velocity, and ghost notes",
-      "Custom groove templates for your style",
-      "Compatible with any drum plugin or sampler",
-      "Delivered as MIDI files you own and can edit",
+      "Full custom build",
+      "Content strategy",
+      "SEO setup and implementation",
+      "60 days of post-launch support",
+      "Unlimited revisions",
     ],
-    forWho: "Solo artists, home recorders, producers without a drummer",
-  },
-  {
-    label: "AUDIO PRODUCTION TOOLS",
-    title: "Tools Built by Musicians, for Musicians",
-    description:
-      "We build software that solves real problems in the recording workflow. Drum pattern generators, humanization plugins, REAPER scripts — all born from actual production needs, not hypothetical feature lists.",
-    details: [
-      "Custom REAPER scripts and extensions",
-      "Browser-based audio tools",
-      "MIDI utilities and generators",
-      "Open-source contributions to the audio community",
-    ],
-    forWho: "REAPER users, producers, audio engineers",
-  },
-  {
-    label: "AI & AUTOMATION",
-    title: "Make the Machines Work For You",
-    description:
-      "Repetitive tasks eat your time. We build automated workflows, AI-powered pipelines, and smart tools that handle the boring stuff so you can focus on the work that matters. Not hype — practical automation that saves real hours.",
-    details: [
-      "Custom AI-powered workflows and assistants",
-      "Process automation for repetitive tasks",
-      "Data pipelines and content processing",
-      "Integration between your existing tools",
-    ],
-    forWho: "Small businesses, content creators, anyone drowning in busywork",
+    forWho: "Established businesses ready for a new site",
   },
 ];
+
+const AUDIO_PACKAGES = [
+  {
+    name: "Single Song Mix",
+    price: "$50",
+    details: [
+      "Up to 32 tracks",
+      "WAV and MP3 delivery",
+      "5 to 7 day turnaround",
+      "1 revision included",
+    ],
+    forWho: null,
+  },
+  {
+    name: "Single Song Master",
+    price: "$30",
+    details: [
+      "Leveled, clear, and ready to upload anywhere",
+      "3 to 5 day turnaround",
+      "1 revision included",
+    ],
+    forWho: null,
+  },
+  {
+    name: "Mix and Master Bundle",
+    price: "$70",
+    details: [
+      "Both services on one song",
+      "5 to 7 day turnaround",
+      "1 revision each",
+    ],
+    forWho: null,
+  },
+  {
+    name: "EP Package",
+    price: "$250",
+    details: [
+      "3 to 5 songs",
+      "Full mix and master on every track",
+      "Unlimited revisions",
+      "About 2 weeks turnaround",
+    ],
+    forWho: null,
+  },
+  {
+    name: "Album Package",
+    price: "$450",
+    details: [
+      "6 to 12 songs",
+      "Full mix and master on every track",
+      "Unlimited revisions",
+      "About 3 to 4 weeks turnaround",
+    ],
+    forWho: null,
+  },
+  {
+    name: "Podcast Editing",
+    price: "$25/episode",
+    details: [
+      "Cleanup, leveling, noise reduction",
+      "Intro and outro assembly",
+      "48 hour turnaround",
+      "1 revision included",
+    ],
+    forWho: null,
+  },
+  {
+    name: "Remote Recording Consultation",
+    price: "$40",
+    details: [
+      "1 hour video call",
+      "Mic placement, room setup, interface settings",
+      "Notes sent after the call",
+    ],
+    forWho: null,
+  },
+  {
+    name: "Home Studio Setup and Mix",
+    price: "$120",
+    details: [
+      "Remote consultation plus a full mix of one song",
+      "Good starting point if you're new to recording at home",
+    ],
+    forWho: null,
+  },
+];
+
+function PackageCard({
+  name,
+  price,
+  details,
+  forWho,
+}: {
+  name: string;
+  price: string;
+  details: string[];
+  forWho: string | null;
+}) {
+  return (
+    <motion.div
+      variants={fadeUp}
+      className="relative flex flex-col"
+      style={{
+        background: "var(--color-bg-card)",
+        border: "1px solid rgba(255,255,255,0.04)",
+        padding: "clamp(1.25rem, 2.5vw, 2rem)",
+      }}
+    >
+      <p
+        className="heading-section mb-2"
+        style={{ fontSize: "0.6rem", letterSpacing: "0.12em" }}
+      >
+        {name.toUpperCase()}
+      </p>
+
+      <p
+        className="heading-display crt-text mb-4"
+        style={{
+          fontSize: "clamp(1.3rem, 3vw, 1.8rem)",
+          color: "var(--color-text-primary)",
+          lineHeight: 1.1,
+        }}
+      >
+        {price}
+      </p>
+
+      <ul style={{ listStyle: "none", padding: 0, marginBottom: "1.25rem", flex: 1 }}>
+        {details.map((d) => (
+          <li
+            key={d}
+            className="flex items-start gap-2 mb-1.5"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.78rem",
+              color: "var(--color-text-dim)",
+              lineHeight: 1.6,
+            }}
+          >
+            <span style={{ color: "var(--color-text-ghost)", flexShrink: 0 }}>+</span>
+            {d}
+          </li>
+        ))}
+      </ul>
+
+      {forWho && (
+        <p
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.65rem",
+            letterSpacing: "0.08em",
+            color: "var(--color-text-dim)",
+            marginTop: "auto",
+          }}
+        >
+          GOOD FOR: {forWho}
+        </p>
+      )}
+    </motion.div>
+  );
+}
 
 export default function ServicesContent() {
   return (
@@ -83,6 +213,7 @@ export default function ServicesContent() {
       bgAlt="A dark silhouette visible through CRT television static"
     >
       <div style={{ marginTop: "-2rem" }}>
+        {/* Page header */}
         <p className="heading-section mb-3">FREQUENCY</p>
         <h1
           className="heading-display crt-text mb-4"
@@ -91,82 +222,122 @@ export default function ServicesContent() {
             color: "var(--color-text-primary)",
           }}
         >
-          What We Build
+          Services &amp; Pricing
         </h1>
-        <p className="body-text mb-12" style={{ maxWidth: "550px" }}>
-          Every service starts with a conversation. Tell us what you need, and
-          we&apos;ll tell you honestly what it takes to get there.
+        <p className="body-text mb-16" style={{ maxWidth: "520px" }}>
+          We do web design and audio engineering out of Maine. Here&apos;s what
+          we offer and what it costs.
         </p>
 
-        <motion.div
-          className="grid grid-cols-1 gap-10"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-        >
-          {SERVICES.map((service) => (
-            <motion.div
-              key={service.label}
-              variants={fadeUp}
-              className="relative"
-              style={{
-                background: "var(--color-bg-card)",
-                border: "1px solid rgba(255,255,255,0.04)",
-                padding: "clamp(1.5rem, 3vw, 2.5rem)",
-              }}
-            >
-              <p className="heading-section mb-3">{service.label}</p>
+        {/* Web Design */}
+        <div className="mb-20">
+          <p className="heading-section mb-2">WEB DESIGN</p>
+          <p className="body-text mb-8" style={{ maxWidth: "480px" }}>
+            A good website should be easy to find and easy to use. We handle the
+            technical side so you don&apos;t have to.
+          </p>
 
-              <h2
-                className="heading-display mb-3"
+          <motion.div
+            className="grid grid-cols-1 gap-6"
+            style={{
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            }}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {WEB_PACKAGES.map((pkg) => (
+              <PackageCard key={pkg.name} {...pkg} />
+            ))}
+          </motion.div>
+
+          {/* Maintenance */}
+          <motion.div
+            className="mt-6"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            style={{
+              background: "var(--color-bg-card)",
+              border: "1px solid rgba(255,255,255,0.04)",
+              padding: "clamp(1.25rem, 2.5vw, 1.75rem)",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1rem",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <p
+                className="heading-section mb-1"
+                style={{ fontSize: "0.6rem", letterSpacing: "0.12em" }}
+              >
+                MONTHLY MAINTENANCE
+              </p>
+              <p
+                className="heading-display"
                 style={{
-                  fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)",
+                  fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
                   color: "var(--color-text-primary)",
                 }}
               >
-                {service.title}
-              </h2>
-
-              <p className="body-text mb-5">{service.description}</p>
-
-              {/* What's included */}
-              <ul style={{ listStyle: "none", padding: 0, marginBottom: "1.25rem" }}>
-                {service.details.map((d) => (
-                  <li
-                    key={d}
-                    className="flex items-start gap-2 mb-1.5"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
-                      color: "var(--color-text-dim)",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <span style={{ color: "var(--color-text-ghost)" }}>+</span>
-                    {d}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Who it's for */}
-              <p
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.1em",
-                  color: "var(--color-text-ghost)",
-                }}
-              >
-                FOR: {service.forWho}
+                $100–$200/mo
               </p>
-            </motion.div>
-          ))}
-        </motion.div>
+            </div>
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.73rem",
+                color: "var(--color-text-dim)",
+                maxWidth: "420px",
+                lineHeight: 1.6,
+              }}
+            >
+              Security updates, minor edits, hosting management. We keep things
+              running while you focus on your work.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Divider */}
+        <div
+          style={{
+            height: "1px",
+            background: "rgba(255,255,255,0.05)",
+            marginBottom: "4rem",
+          }}
+        />
+
+        {/* Audio Engineering */}
+        <div className="mb-20">
+          <p className="heading-section mb-2">AUDIO ENGINEERING</p>
+          <p className="body-text mb-8" style={{ maxWidth: "480px" }}>
+            All remote. We work with artists, podcasters, and home studio
+            musicians wherever you are.
+          </p>
+
+          <motion.div
+            className="grid grid-cols-1 gap-6"
+            style={{
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            }}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {AUDIO_PACKAGES.map((pkg) => (
+              <PackageCard key={pkg.name} {...pkg} />
+            ))}
+          </motion.div>
+        </div>
 
         {/* CTA */}
         <motion.div
-          className="mt-16 text-center"
+          className="mt-4 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -179,9 +350,9 @@ export default function ServicesContent() {
               color: "var(--color-text-primary)",
             }}
           >
-            Got a project in mind?
+            Ready to transmit?
           </p>
-          <a
+          <Link
             href="/contact"
             style={{
               display: "inline-block",
@@ -204,8 +375,8 @@ export default function ServicesContent() {
               e.currentTarget.style.background = "transparent";
             }}
           >
-            Start a Conversation
-          </a>
+            Head to the contact page
+          </Link>
         </motion.div>
       </div>
     </PageShell>

@@ -10,7 +10,7 @@ export default function Footer() {
         background: "var(--color-bg-void)",
       }}
     >
-      <div className="content-container flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="content-container flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
         <div className="flex items-center gap-3">
           <img
             src="/images/logo-badge-sm.png"

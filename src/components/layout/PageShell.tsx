@@ -40,7 +40,7 @@ export default function PageShell({
       {/* TV Hero Banner */}
       <div
         className="relative w-full overflow-hidden"
-        style={{ height: "clamp(220px, 40vh, 420px)" }}
+        style={{ height: "clamp(200px, 35vh, 420px)" }}
       >
         <picture>
           <source media="(max-width: 768px)" srcSet={bgImageMobile} />

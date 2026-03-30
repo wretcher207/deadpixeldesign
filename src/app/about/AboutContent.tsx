@@ -28,7 +28,7 @@ export default function AboutContent() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12"
+          className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12"
         >
           {/* Main story */}
           <motion.div variants={fadeUp}>

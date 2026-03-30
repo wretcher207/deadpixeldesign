@@ -129,6 +129,30 @@ body {
 }
 
 /* ============================================
+   MOBILE PERFORMANCE
+   Disable heavy GPU overlays on smaller screens
+   ============================================ */
+
+@media (max-width: 768px) {
+  .grain-overlay::before {
+    animation: none;
+    opacity: 0.02;
+  }
+
+  .scanlines::after {
+    opacity: 0.4;
+  }
+
+  .vignette::after {
+    background: radial-gradient(
+      ellipse at center,
+      transparent 40%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+}
+
+/* ============================================
    CRT TEXT EFFECT (chromatic aberration)
    ============================================ */
 
@@ -226,6 +250,14 @@ body {
   color: var(--color-text-secondary);
 }
 
+/* Mobile: slightly bump body text for readability */
+@media (max-width: 768px) {
+  .body-text {
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+}
+
 /* ============================================
    TV SCREEN GLOW EFFECT
    ============================================ */
@@ -289,4 +321,17 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--spacing-content);
+}
+
+/* ============================================
+   CARD STYLES
+   ============================================ */
+
+.card-hover {
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.card-hover:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(17, 17, 17, 0.85);
 }

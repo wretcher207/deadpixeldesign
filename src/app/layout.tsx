@@ -55,6 +55,7 @@ export const metadata: Metadata = {
     "audio production tools",
     "Dead Pixel Design",
   ],
+  applicationName: "Dead Pixel Design",
   authors: [{ name: "Dead Pixel Design" }],
   creator: "Dead Pixel Design",
   openGraph: {
@@ -94,6 +95,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
       { url: "/images/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/images/favicon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/images/favicon-512.png", sizes: "512x512", type: "image/png" },

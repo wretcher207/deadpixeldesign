@@ -10,15 +10,6 @@ import ChannelTransition from "@/components/layout/ChannelTransition";
 import { CHANNELS } from "@/lib/channels";
 import { heroTitle, heroTagline, fadeIn } from "@/lib/animations";
 
-/**
- * HOME PAGE CLIENT COMPONENT
- *
- * Full-viewport battered CRT television in a post-apocalyptic scene.
- * The photo's own static IS the screen. Logo and tagline float over it
- * with blend modes. Navigation via the nav bar and mobile channel buttons.
- *
- * Below the fold: SEO-friendly overview with internal links.
- */
 export default function HomeContent() {
   const router = useRouter();
   const [transitioning, setTransitioning] = useState(false);
@@ -66,9 +57,9 @@ export default function HomeContent() {
           }}
         />
 
-        {/* === Rolling static — confined to the TV screen area === */}
+        {/* === Rolling static — desktop only for performance === */}
         <div
-          className="absolute z-10 pointer-events-none overflow-hidden"
+          className="absolute z-10 pointer-events-none overflow-hidden hidden md:block"
           style={{
             left: "28%",
             top: "29%",
@@ -85,15 +76,11 @@ export default function HomeContent() {
         {/* === Subtle scan lines over the whole scene === */}
         <ScanLines opacity={0.06} gap={3} />
 
-        {/* === Logo + Title + Tagline — centered on the TV screen === */}
+        {/* === Logo + Title + Tagline === */}
+        {/* Mobile: centered full-screen. Desktop: positioned over TV screen */}
         <div
-          className="absolute flex flex-col items-center justify-center z-20"
-          style={{
-            left: "28%",
-            top: "26%",
-            width: "33%",
-            height: "62%",
-          }}
+          className="absolute inset-0 flex flex-col items-center justify-center z-20 px-6
+                     md:left-[28%] md:top-[26%] md:right-auto md:bottom-auto md:w-[33%] md:h-[62%] md:px-0"
         >
           <motion.img
             src="/images/logo-badge-transparent.png"
@@ -105,9 +92,10 @@ export default function HomeContent() {
             animate="visible"
             className="mb-5"
             style={{
-              filter: "brightness(4) contrast(1.3) drop-shadow(0 0 2px rgba(0,0,0,0.9)) drop-shadow(0 0 1px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(255,255,255,0.5))",
+              filter:
+                "brightness(4) contrast(1.3) drop-shadow(0 0 2px rgba(0,0,0,0.9)) drop-shadow(0 0 1px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(255,255,255,0.5))",
               opacity: 1,
-              maxWidth: "clamp(110px, 14vw, 180px)",
+              maxWidth: "clamp(100px, 22vw, 180px)",
               height: "auto",
             }}
           />
@@ -119,7 +107,7 @@ export default function HomeContent() {
             animate="visible"
             style={{
               fontFamily: "var(--font-brand)",
-              fontSize: "clamp(1.4rem, 4.5vw, 3.2rem)",
+              fontSize: "clamp(1.6rem, 5vw, 3.2rem)",
               fontWeight: 700,
               color: "rgba(255,255,255,0.85)",
               textTransform: "uppercase",
@@ -139,7 +127,7 @@ export default function HomeContent() {
             className="text-center mt-3"
             style={{
               fontFamily: "var(--font-mono)",
-              fontSize: "clamp(0.55rem, 1.2vw, 0.8rem)",
+              fontSize: "clamp(0.65rem, 1.4vw, 0.85rem)",
               color: "rgba(255,255,255,0.5)",
               letterSpacing: "0.2em",
               mixBlendMode: "screen",
@@ -148,19 +136,18 @@ export default function HomeContent() {
           >
             We don&apos;t optimize. We haunt.
           </motion.p>
-
         </div>
 
-        {/* === Mobile: Swipe/tap channel bar === */}
+        {/* === Mobile: Channel navigation buttons === */}
         <div
-          className="absolute bottom-0 left-0 right-0 md:hidden"
+          className="absolute bottom-0 left-0 right-0 md:hidden z-30"
           style={{
             background:
               "linear-gradient(to top, rgba(5,5,5,0.95) 0%, transparent 100%)",
-            padding: "2rem 1rem 1.5rem",
+            padding: "3rem 1rem 2rem",
           }}
         >
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-3 flex-wrap">
             {CHANNELS.filter((c) => c.route !== "/").map((ch) => (
               <button
                 key={ch.id}
@@ -170,14 +157,15 @@ export default function HomeContent() {
                 }}
                 className="cursor-pointer"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  padding: "8px 14px",
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  padding: "10px 18px",
                   fontFamily: "var(--font-mono)",
-                  fontSize: "0.55rem",
-                  letterSpacing: "0.2em",
-                  color: "var(--color-text-dim)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.15em",
+                  color: "var(--color-text-secondary)",
                   textTransform: "uppercase",
+                  borderRadius: "2px",
                 }}
               >
                 {ch.label}
@@ -195,13 +183,17 @@ export default function HomeContent() {
           padding: "var(--spacing-section) 0",
         }}
       >
-        <div className="content-container" style={{ textAlign: "center", transform: "translateX(-3vw)" }}>
+        <div className="content-container" style={{ textAlign: "center" }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.7 }}
-            style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
             <p className="heading-section mb-4">SIGNAL ORIGIN</p>
             <h2
@@ -219,25 +211,35 @@ export default function HomeContent() {
               style={{ maxWidth: "600px", textAlign: "center" }}
             >
               Dead Pixel Design is a{" "}
-              <strong>web design and audio engineering studio based in Maine</strong>.
-              We partner with small businesses, musicians, and independent creators
-              who want something built from scratch — not a recycled template
-              with a new coat of paint.
+              <strong>
+                web design and audio engineering studio based in Maine
+              </strong>
+              . We partner with small businesses, musicians, and independent
+              creators who want something built from scratch — not a recycled
+              template with a new coat of paint.
             </p>
             <p
               className="body-text mb-8"
               style={{ maxWidth: "600px", textAlign: "center" }}
             >
               Custom websites that actually drive calls. Mixes and masters that
-              translate across every speaker. MIDI programming that breathes.
-              AI workflows that cut hours off your week. One person, no middlemen —{" "}
-              <Link href="/services" style={{ color: "var(--color-text-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              translate across every speaker. MIDI programming that breathes. AI
+              workflows that cut hours off your week. One person, no middlemen —{" "}
+              <Link
+                href="/services"
+                style={{
+                  color: "var(--color-text-primary)",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                }}
+              >
                 just the work
-              </Link>.
+              </Link>
+              .
             </p>
 
             <div
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 w-full"
               style={{ maxWidth: "700px", textAlign: "left" }}
             >
               {[
@@ -264,7 +266,7 @@ export default function HomeContent() {
                       fontSize: "0.85rem",
                       fontWeight: 600,
                       color: "var(--color-text-primary)",
-                      marginBottom: "0.4rem",
+                      marginBottom: "0.5rem",
                     }}
                   >
                     {item.label}
@@ -272,9 +274,9 @@ export default function HomeContent() {
                   <p
                     style={{
                       fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
+                      fontSize: "0.78rem",
                       color: "var(--color-text-dim)",
-                      lineHeight: 1.6,
+                      lineHeight: 1.7,
                     }}
                   >
                     {item.desc}
@@ -288,13 +290,28 @@ export default function HomeContent() {
               style={{ maxWidth: "600px", textAlign: "center" }}
             >
               Based in Maine, working with clients across the country.{" "}
-              <Link href="/work" style={{ color: "var(--color-text-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              <Link
+                href="/work"
+                style={{
+                  color: "var(--color-text-primary)",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                }}
+              >
                 See what we&apos;ve built
               </Link>{" "}
               or{" "}
-              <Link href="/contact" style={{ color: "var(--color-text-primary)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              <Link
+                href="/contact"
+                style={{
+                  color: "var(--color-text-primary)",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                }}
+              >
                 book a free consultation
-              </Link>.
+              </Link>
+              .
             </p>
           </motion.div>
         </div>

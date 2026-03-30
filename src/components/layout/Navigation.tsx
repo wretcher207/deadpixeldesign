@@ -61,7 +61,7 @@ export default function Navigation() {
           borderBottom: "1px solid rgba(255,255,255,0.04)",
         }}
       >
-        <div className="flex items-center justify-between h-14 w-full max-w-[700px] mx-auto px-6" style={{ transform: "translateX(-5vw)" }}>
+        <div className="flex items-center justify-between h-14 w-full max-w-[900px] mx-auto px-6">
           {/* Logo / Home link */}
           <button
             onClick={() => navigate("/")}
@@ -102,9 +102,9 @@ export default function Navigation() {
                     background: "none",
                     border: "none",
                     fontFamily: "var(--font-mono)",
-                    fontSize: "0.65rem",
+                    fontSize: "0.7rem",
                     fontWeight: 500,
-                    letterSpacing: "0.25em",
+                    letterSpacing: "0.2em",
                     textTransform: "uppercase",
                     color: isActive
                       ? "var(--color-text-primary)"

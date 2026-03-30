@@ -17,12 +17,7 @@ interface StaticCanvasProps {
 
 /**
  * Animated CRT static noise rendered on a canvas.
- *
- * How it works:
- * - Creates a small offscreen buffer (for performance)
- * - Fills it with random grayscale pixels each frame
- * - Draws it scaled up to the canvas, creating the chunky CRT static look
- * - Adds horizontal distortion bands that drift down the screen
+ * Uses a persistent offscreen buffer for performance.
  */
 export default function StaticCanvas({
   intensity = 0.5,
@@ -34,6 +29,8 @@ export default function StaticCanvas({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const frameRef = useRef<number>(0);
   const timeRef = useRef<number>(0);
+  const bufferRef = useRef<HTMLCanvasElement | null>(null);
+  const bufferCtxRef = useRef<CanvasRenderingContext2D | null>(null);
 
   const draw = useCallback(
     (timestamp: number) => {
@@ -58,7 +55,22 @@ export default function StaticCanvas({
       const bufW = Math.ceil(w / pixelSize);
       const bufH = Math.ceil(h / pixelSize);
 
-      const imageData = ctx.createImageData(bufW, bufH);
+      // Reuse the buffer canvas instead of creating a new one every frame
+      if (
+        !bufferRef.current ||
+        bufferRef.current.width !== bufW ||
+        bufferRef.current.height !== bufH
+      ) {
+        bufferRef.current = document.createElement("canvas");
+        bufferRef.current.width = bufW;
+        bufferRef.current.height = bufH;
+        bufferCtxRef.current = bufferRef.current.getContext("2d");
+      }
+
+      const tempCtx = bufferCtxRef.current;
+      if (!tempCtx) return;
+
+      const imageData = tempCtx.createImageData(bufW, bufH);
       const data = imageData.data;
 
       // Time for animated distortion bands
@@ -66,47 +78,29 @@ export default function StaticCanvas({
       const t = timeRef.current;
 
       for (let y = 0; y < bufH; y++) {
-        // Horizontal distortion bands that move down the screen
         const bandOffset = Math.sin((y * 0.3 + t * 0.002) * 0.5) * 0.15;
-        // Occasional bright scan line
         const scanBright =
           Math.sin((y * 2.5 + t * 0.01) * 0.3) > 0.97 ? 0.3 : 0;
 
         for (let x = 0; x < bufW; x++) {
           const i = (y * bufW + x) * 4;
 
-          // Base static noise
           let val = Math.random() * 255;
-
-          // Apply band distortion
           val = val * (1 + bandOffset) + scanBright * 255;
-
-          // Clamp
           val = Math.min(255, Math.max(0, val));
 
-          data[i] = val;     // R
-          data[i + 1] = val; // G
-          data[i + 2] = val; // B
-          data[i + 3] = 255; // A
+          data[i] = val;
+          data[i + 1] = val;
+          data[i + 2] = val;
+          data[i + 3] = 255;
         }
       }
 
-      // Draw the small buffer, then scale it up
-      // Create a temporary canvas for the small buffer
-      const tempCanvas = document.createElement("canvas");
-      tempCanvas.width = bufW;
-      tempCanvas.height = bufH;
-      const tempCtx = tempCanvas.getContext("2d");
-      if (tempCtx) {
-        tempCtx.putImageData(imageData, 0, 0);
+      tempCtx.putImageData(imageData, 0, 0);
 
-        // Disable smoothing for crisp pixel scaling
-        ctx.imageSmoothingEnabled = false;
-
-        // Clear and draw scaled
-        ctx.clearRect(0, 0, w, h);
-        ctx.drawImage(tempCanvas, 0, 0, bufW, bufH, 0, 0, w, h);
-      }
+      ctx.imageSmoothingEnabled = false;
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(bufferRef.current!, 0, 0, bufW, bufH, 0, 0, w, h);
 
       if (active) {
         frameRef.current = requestAnimationFrame(draw);
