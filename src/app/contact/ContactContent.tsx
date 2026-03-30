@@ -78,7 +78,7 @@ export default function ContactContent() {
             <div className="mb-6">
               <p
                 style={{
-                  fontFamily: "var(--font-mono)",
+                  fontFamily: "var(--font-body)",
                   fontSize: "0.6rem",
                   letterSpacing: "0.15em",
                   color: "var(--color-text-ghost)",
@@ -92,7 +92,7 @@ export default function ContactContent() {
                 href="tel:+12076948691"
                 className="crt-text"
                 style={{
-                  fontFamily: "var(--font-display)",
+                  fontFamily: "var(--font-brand)",
                   fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
                   fontWeight: 600,
                   color: "var(--color-text-primary)",
@@ -111,7 +111,7 @@ export default function ContactContent() {
             <div className="mb-6">
               <p
                 style={{
-                  fontFamily: "var(--font-mono)",
+                  fontFamily: "var(--font-body)",
                   fontSize: "0.6rem",
                   letterSpacing: "0.15em",
                   color: "var(--color-text-ghost)",
@@ -124,7 +124,7 @@ export default function ContactContent() {
               <a
                 href="mailto:david@deadpixeldesign.com"
                 style={{
-                  fontFamily: "var(--font-mono)",
+                  fontFamily: "var(--font-body)",
                   fontSize: "0.9rem",
                   color: "var(--color-text-secondary)",
                   textDecoration: "none",
@@ -145,7 +145,7 @@ export default function ContactContent() {
             <div>
               <p
                 style={{
-                  fontFamily: "var(--font-mono)",
+                  fontFamily: "var(--font-body)",
                   fontSize: "0.6rem",
                   letterSpacing: "0.15em",
                   color: "var(--color-text-ghost)",
@@ -157,7 +157,7 @@ export default function ContactContent() {
               </p>
               <p
                 style={{
-                  fontFamily: "var(--font-mono)",
+                  fontFamily: "var(--font-body)",
                   fontSize: "0.9rem",
                   color: "var(--color-text-secondary)",
                 }}
@@ -166,7 +166,7 @@ export default function ContactContent() {
               </p>
               <p
                 style={{
-                  fontFamily: "var(--font-mono)",
+                  fontFamily: "var(--font-body)",
                   fontSize: "0.7rem",
                   color: "var(--color-text-ghost)",
                   marginTop: "0.25rem",
@@ -204,7 +204,7 @@ export default function ContactContent() {
                   >
                     <span
                       style={{
-                        fontFamily: "var(--font-mono)",
+                        fontFamily: "var(--font-body)",
                         fontSize: "0.7rem",
                         fontWeight: 500,
                         color: "var(--color-text-dim)",
@@ -218,7 +218,7 @@ export default function ContactContent() {
                     </span>
                     <span
                       style={{
-                        fontFamily: "var(--font-mono)",
+                        fontFamily: "var(--font-body)",
                         fontSize: "0.65rem",
                         color: "var(--color-text-ghost)",
                         transition: "color 0.2s",
@@ -264,7 +264,7 @@ export default function ContactContent() {
         >
           <p
             style={{
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-body)",
               fontSize: "0.75rem",
               color: "var(--color-text-ghost)",
               letterSpacing: "0.1em",

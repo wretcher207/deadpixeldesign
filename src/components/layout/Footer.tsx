@@ -21,7 +21,7 @@ export default function Footer() {
           />
           <span
             style={{
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-body)",
               fontSize: "0.65rem",
               color: "var(--color-text-ghost)",
               letterSpacing: "0.1em",
@@ -34,7 +34,7 @@ export default function Footer() {
         <div
           className="flex items-center gap-6"
           style={{
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-body)",
             fontSize: "0.6rem",
             color: "var(--color-text-ghost)",
             letterSpacing: "0.1em",

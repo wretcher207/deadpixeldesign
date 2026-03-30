@@ -176,7 +176,7 @@ function PackageCard({
             key={d}
             className="flex items-start gap-2 mb-1.5"
             style={{
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-body)",
               fontSize: "0.78rem",
               color: "var(--color-text-dim)",
               lineHeight: 1.6,
@@ -191,7 +191,7 @@ function PackageCard({
       {forWho && (
         <p
           style={{
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-body)",
             fontSize: "0.65rem",
             letterSpacing: "0.08em",
             color: "var(--color-text-dim)",
@@ -289,7 +289,7 @@ export default function ServicesContent() {
             </div>
             <p
               style={{
-                fontFamily: "var(--font-mono)",
+                fontFamily: "var(--font-body)",
                 fontSize: "0.73rem",
                 color: "var(--color-text-dim)",
                 maxWidth: "420px",
@@ -356,7 +356,7 @@ export default function ServicesContent() {
             href="/contact"
             style={{
               display: "inline-block",
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-body)",
               fontSize: "0.7rem",
               letterSpacing: "0.25em",
               textTransform: "uppercase",

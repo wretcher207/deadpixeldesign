@@ -89,7 +89,7 @@ export default function AboutContent() {
                 <div key={item.label} className="mb-3">
                   <p
                     style={{
-                      fontFamily: "var(--font-mono)",
+                      fontFamily: "var(--font-body)",
                       fontSize: "0.6rem",
                       letterSpacing: "0.15em",
                       color: "var(--color-text-ghost)",
@@ -101,7 +101,7 @@ export default function AboutContent() {
                   </p>
                   <p
                     style={{
-                      fontFamily: "var(--font-mono)",
+                      fontFamily: "var(--font-body)",
                       fontSize: "0.8rem",
                       color: "var(--color-text-secondary)",
                     }}
@@ -133,7 +133,7 @@ export default function AboutContent() {
                   key={line}
                   className="mb-2"
                   style={{
-                    fontFamily: "var(--font-mono)",
+                    fontFamily: "var(--font-body)",
                     fontSize: "0.75rem",
                     color: "var(--color-text-dim)",
                     lineHeight: 1.6,

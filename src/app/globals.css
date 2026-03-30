@@ -29,8 +29,7 @@
   --color-crt-green: rgba(80, 255, 80, 0.06);
 
   /* === Typography === */
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  --font-body: "VT323", "Courier New", monospace;
 
   /* === Spacing === */
   --spacing-section: clamp(4rem, 10vh, 8rem);
@@ -48,7 +47,7 @@ html {
 }
 
 body {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   color: var(--color-text-primary);
   background-color: var(--color-bg-void);
   -webkit-font-smoothing: antialiased;
@@ -228,33 +227,33 @@ body {
    ============================================ */
 
 .heading-display {
-  font-family: var(--font-display);
+  font-family: var(--font-brand);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
 .heading-section {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--color-text-dim);
 }
 
 .body-text {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
   color: var(--color-text-secondary);
 }
 
 /* Mobile: slightly bump body text for readability */
 @media (max-width: 768px) {
   .body-text {
-    font-size: 0.85rem;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.7;
   }
 }
 

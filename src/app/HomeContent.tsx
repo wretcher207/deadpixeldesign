@@ -126,8 +126,8 @@ export default function HomeContent() {
             animate="visible"
             className="text-center mt-3"
             style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "clamp(0.65rem, 1.4vw, 0.85rem)",
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(0.9rem, 1.8vw, 1.15rem)",
               color: "rgba(255,255,255,0.5)",
               letterSpacing: "0.2em",
               mixBlendMode: "screen",
@@ -160,8 +160,8 @@ export default function HomeContent() {
                   background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.1)",
                   padding: "10px 18px",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.9rem",
                   letterSpacing: "0.15em",
                   color: "var(--color-text-secondary)",
                   textTransform: "uppercase",
@@ -262,9 +262,9 @@ export default function HomeContent() {
                 <Link key={item.label} href={item.href} className="group block">
                   <h3
                     style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "0.85rem",
-                      fontWeight: 600,
+                      fontFamily: "var(--font-brand)",
+                      fontSize: "1.1rem",
+                      fontWeight: 700,
                       color: "var(--color-text-primary)",
                       marginBottom: "0.5rem",
                     }}
@@ -273,8 +273,8 @@ export default function HomeContent() {
                   </h3>
                   <p
                     style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.78rem",
+                      fontFamily: "var(--font-body)",
+                      fontSize: "1rem",
                       color: "var(--color-text-dim)",
                       lineHeight: 1.7,
                     }}

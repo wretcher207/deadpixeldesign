@@ -157,7 +157,7 @@ export default function WorkContent() {
                 </span>
                 <span
                   style={{
-                    fontFamily: "var(--font-mono)",
+                    fontFamily: "var(--font-body)",
                     fontSize: "0.6rem",
                     color: "var(--color-text-ghost)",
                   }}
@@ -212,7 +212,7 @@ export default function WorkContent() {
                     key={h}
                     className="flex items-start gap-2 mb-1.5"
                     style={{
-                      fontFamily: "var(--font-mono)",
+                      fontFamily: "var(--font-body)",
                       fontSize: "0.78rem",
                       color: "var(--color-text-dim)",
                       lineHeight: 1.6,
@@ -237,7 +237,7 @@ export default function WorkContent() {
                   <span
                     key={t}
                     style={{
-                      fontFamily: "var(--font-mono)",
+                      fontFamily: "var(--font-body)",
                       fontSize: "0.6rem",
                       letterSpacing: "0.08em",
                       color: "var(--color-text-dim)",

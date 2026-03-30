@@ -101,9 +101,9 @@ export default function Navigation() {
                   style={{
                     background: "none",
                     border: "none",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.7rem",
-                    fontWeight: 500,
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.95rem",
+                    fontWeight: 400,
                     letterSpacing: "0.2em",
                     textTransform: "uppercase",
                     color: isActive
@@ -221,9 +221,9 @@ export default function Navigation() {
                     style={{
                       background: "none",
                       border: "none",
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.8rem",
-                      fontWeight: 500,
+                      fontFamily: "var(--font-body)",
+                      fontSize: "1.1rem",
+                      fontWeight: 400,
                       letterSpacing: "0.3em",
                       textTransform: "uppercase",
                       color: isActive

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { VT323 } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
@@ -11,17 +11,10 @@ import {
   OrganizationJsonLd,
 } from "@/components/seo/JsonLd";
 
-const spaceGrotesk = Space_Grotesk({
+const vt323 = VT323({
   subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["300", "400", "500"],
+  variable: "--font-body",
+  weight: "400",
   display: "swap",
 });
 
@@ -115,7 +108,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${cryptScript.variable}`}
+      className={`${vt323.variable} ${cryptScript.variable}`}
     >
       <head>
         <LocalBusinessJsonLd />
