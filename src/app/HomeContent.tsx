@@ -61,10 +61,10 @@ export default function HomeContent() {
         <div
           className="absolute z-10 pointer-events-none overflow-hidden hidden md:block"
           style={{
-            left: "28%",
-            top: "29%",
-            width: "33%",
-            height: "62%",
+            left: "25%",
+            top: "28.7%",
+            width: "39%",
+            height: "68%",
             borderRadius: "8px",
             mixBlendMode: "overlay",
             opacity: 0.4,
@@ -80,7 +80,7 @@ export default function HomeContent() {
         {/* Mobile: centered full-screen. Desktop: positioned over TV screen */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center z-20 px-6
-                     md:left-[28%] md:top-[26%] md:right-auto md:bottom-auto md:w-[33%] md:h-[62%] md:px-0"
+                     md:left-[28%] md:top-[30%] md:right-auto md:bottom-auto md:w-[33%] md:h-[62%] md:px-0"
         >
           <motion.img
             src="/images/logo-badge-transparent.png"
@@ -88,7 +88,7 @@ export default function HomeContent() {
             width={180}
             height={180}
             variants={fadeIn}
-            initial="hidden"
+            initial={{ opacity: 1 }}
             animate="visible"
             className="mb-5"
             style={{
@@ -103,7 +103,7 @@ export default function HomeContent() {
           <motion.h1
             className="crt-text-strong text-center"
             variants={heroTitle}
-            initial="hidden"
+            initial={{ opacity: 1, letterSpacing: "-0.02em", filter: "blur(0px)" }}
             animate="visible"
             style={{
               fontFamily: "var(--font-brand)",
@@ -122,7 +122,7 @@ export default function HomeContent() {
 
           <motion.p
             variants={heroTagline}
-            initial="hidden"
+            initial={{ opacity: 0.7, y: 0 }}
             animate="visible"
             className="text-center mt-3"
             style={{

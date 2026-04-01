@@ -189,7 +189,7 @@ export default function WorkContent() {
                         opacity: 0.4,
                       }}
                     >
-                      &nearr;
+                      {"\u2197"}
                     </span>
                   </a>
                 ) : (

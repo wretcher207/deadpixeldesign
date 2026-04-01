@@ -1,8 +1,247 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import PageShell from "@/components/layout/PageShell";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
+
+const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/26768975/unqhe52/";
+
+const PROJECT_TYPES = [
+  "New Website",
+  "Redesign",
+  "Maintenance",
+  "Other",
+];
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  padding: "0.75rem 1rem",
+  fontFamily: "var(--font-body)",
+  fontSize: "0.85rem",
+  color: "var(--color-text-primary)",
+  background: "rgba(0, 0, 0, 0.4)",
+  border: "1px solid rgba(255,255,255,0.08)",
+  outline: "none",
+  transition: "border-color 0.2s",
+};
+
+const labelStyle: React.CSSProperties = {
+  fontFamily: "var(--font-body)",
+  fontSize: "0.6rem",
+  letterSpacing: "0.15em",
+  color: "var(--color-text-ghost)",
+  textTransform: "uppercase",
+  marginBottom: "0.5rem",
+  display: "block",
+};
+
+function BookingForm() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    details: "",
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        body: JSON.stringify(form),
+        mode: "no-cors",
+      });
+      setStatus("sent");
+      setForm({ name: "", email: "", phone: "", projectType: "", details: "" });
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  if (status === "sent") {
+    return (
+      <div
+        style={{
+          background: "var(--color-bg-card)",
+          border: "1px solid rgba(255,255,255,0.04)",
+          padding: "clamp(1.5rem, 3vw, 2.5rem)",
+          textAlign: "center",
+        }}
+      >
+        <p
+          className="heading-section mb-3"
+          style={{ color: "var(--color-text-secondary)" }}
+        >
+          SIGNAL RECEIVED
+        </p>
+        <p className="body-text">
+          Your request came through. I will get back to you within 24 hours.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        background: "var(--color-bg-card)",
+        border: "1px solid rgba(255,255,255,0.04)",
+        padding: "clamp(1.5rem, 3vw, 2.5rem)",
+      }}
+    >
+      <p className="heading-section mb-6">BOOK A PROJECT</p>
+
+      <div className="space-y-5">
+        {/* Name */}
+        <div>
+          <label htmlFor="name" style={labelStyle}>Name *</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            value={form.name}
+            onChange={handleChange}
+            style={inputStyle}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+          />
+        </div>
+
+        {/* Email */}
+        <div>
+          <label htmlFor="email" style={labelStyle}>Email *</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            value={form.email}
+            onChange={handleChange}
+            style={inputStyle}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+          />
+        </div>
+
+        {/* Phone */}
+        <div>
+          <label htmlFor="phone" style={labelStyle}>Phone</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            value={form.phone}
+            onChange={handleChange}
+            style={inputStyle}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+          />
+        </div>
+
+        {/* Project Type */}
+        <div>
+          <label htmlFor="projectType" style={labelStyle}>Project Type *</label>
+          <select
+            id="projectType"
+            name="projectType"
+            required
+            value={form.projectType}
+            onChange={handleChange}
+            style={{
+              ...inputStyle,
+              appearance: "none",
+              cursor: "pointer",
+            }}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+          >
+            <option value="" disabled>Select one</option>
+            {PROJECT_TYPES.map((type) => (
+              <option key={type} value={type} style={{ background: "#111", color: "#eee" }}>
+                {type}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Details */}
+        <div>
+          <label htmlFor="details" style={labelStyle}>Tell me about your project *</label>
+          <textarea
+            id="details"
+            name="details"
+            required
+            rows={4}
+            value={form.details}
+            onChange={handleChange}
+            style={{ ...inputStyle, resize: "vertical" }}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+          />
+        </div>
+
+        {/* Submit */}
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          style={{
+            width: "100%",
+            padding: "0.85rem",
+            fontFamily: "var(--font-body)",
+            fontSize: "0.7rem",
+            fontWeight: 600,
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "var(--color-text-primary)",
+            background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            cursor: status === "sending" ? "wait" : "pointer",
+            transition: "all 0.2s",
+            opacity: status === "sending" ? 0.5 : 1,
+          }}
+          onMouseEnter={(e) => {
+            if (status !== "sending") {
+              e.currentTarget.style.background = "rgba(255,255,255,0.12)";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+          }}
+        >
+          {status === "sending" ? "Transmitting..." : "Send Request"}
+        </button>
+
+        {status === "error" && (
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "0.75rem",
+              color: "#ff6b6b",
+              textAlign: "center",
+            }}
+          >
+            Something went wrong. Try again, or reach out directly.
+          </p>
+        )}
+      </div>
+    </form>
+  );
+}
 
 const SOCIALS = [
   {
@@ -225,7 +464,7 @@ export default function ContactContent() {
                       }}
                       className="group-hover:!text-[var(--color-text-dim)]"
                     >
-                      {social.label} &nearr;
+                      {social.label} {"\u2197"}
                     </span>
                   </a>
                 ))}
@@ -253,6 +492,18 @@ export default function ContactContent() {
               />
             </div>
           </motion.div>
+        </motion.div>
+
+        {/* Booking Form */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="mb-16"
+          style={{ maxWidth: "600px" }}
+        >
+          <BookingForm />
         </motion.div>
 
         {/* Bottom CTA */}

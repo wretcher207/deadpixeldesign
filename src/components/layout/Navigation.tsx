@@ -65,7 +65,7 @@ export default function Navigation() {
           {/* Logo / Home link */}
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-3 group cursor-pointer"
+            className="flex items-center gap-3 group cursor-pointer shrink-0"
             style={{ background: "none", border: "none" }}
           >
             <img
@@ -102,7 +102,7 @@ export default function Navigation() {
                     background: "none",
                     border: "none",
                     fontFamily: "var(--font-body)",
-                    fontSize: "0.95rem",
+                    fontSize: "1.05rem",
                     fontWeight: 400,
                     letterSpacing: "0.2em",
                     textTransform: "uppercase",
