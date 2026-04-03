@@ -59,7 +59,10 @@ function BookingForm() {
     try {
       await fetch(WEBHOOK_URL, {
         method: "POST",
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          date: new Date().toLocaleString("en-US", { timeZone: "America/New_York" }),
+        }),
         mode: "no-cors",
       });
       setStatus("sent");
