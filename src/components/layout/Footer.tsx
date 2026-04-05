@@ -5,7 +5,7 @@ export default function Footer() {
     <footer
       className="relative z-10"
       style={{
-        borderTop: "1px solid rgba(255,255,255,0.04)",
+        borderTop: "1px solid rgba(212,168,83,0.06)",
         padding: "2.5rem 0",
         background: "var(--color-bg-void)",
       }}

@@ -53,59 +53,64 @@ export const staggerFast: Variants = {
 export const pageTransition: Variants = {
   initial: {
     opacity: 0,
-    filter: "brightness(3) contrast(0.3) blur(2px)",
+    filter: "blur(6px)",
+    y: 10,
   },
   enter: {
     opacity: 1,
-    filter: "brightness(1) contrast(1) blur(0px)",
-    transition: { duration: 0.5, ease: snappy, delay: 0.1 },
+    filter: "blur(0px)",
+    y: 0,
+    transition: { duration: 0.6, ease: smooth },
   },
   exit: {
     opacity: 0,
-    filter: "brightness(4) contrast(0) blur(4px)",
-    transition: { duration: 0.25, ease: snappy },
+    filter: "blur(4px)",
+    y: -5,
+    transition: { duration: 0.3, ease: snappy },
   },
 };
 
-export const staticBurst: Variants = {
-  hidden: { opacity: 0 },
+export const cosmicHero: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    filter: "blur(8px)",
+  },
   visible: {
-    opacity: [0, 1, 0.85, 1, 0.9, 0],
-    transition: { duration: 0.5, times: [0, 0.05, 0.2, 0.4, 0.7, 1] },
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 1.2, ease: smooth, delay: 0.3 },
+  },
+};
+
+export const starReveal: Variants = {
+  hidden: { opacity: 0, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.6, ease: smooth },
+  },
+};
+
+export const constellationStagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 1.0,
+    },
   },
 };
 
 export const cardHover = {
   rest: {
-    borderColor: "rgba(255,255,255,0.04)",
+    borderColor: "rgba(212,168,83,0.04)",
     transition: { duration: 0.3 },
   },
   hover: {
-    borderColor: "rgba(255,255,255,0.1)",
+    borderColor: "rgba(212,168,83,0.2)",
     transition: { duration: 0.3 },
-  },
-};
-
-export const heroTitle: Variants = {
-  hidden: {
-    opacity: 0,
-    letterSpacing: "0.3em",
-    filter: "blur(10px)",
-  },
-  visible: {
-    opacity: 1,
-    letterSpacing: "-0.02em",
-    filter: "blur(0px)",
-    transition: { duration: 1.6, ease: smooth },
-  },
-};
-
-export const heroTagline: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 0.7,
-    y: 0,
-    transition: { duration: 1, ease: smooth, delay: 1.2 },
   },
 };
 

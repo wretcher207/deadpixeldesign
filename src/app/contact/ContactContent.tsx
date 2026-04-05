@@ -20,8 +20,8 @@ const inputStyle: React.CSSProperties = {
   fontFamily: "var(--font-body)",
   fontSize: "0.85rem",
   color: "var(--color-text-primary)",
-  background: "rgba(0, 0, 0, 0.4)",
-  border: "1px solid rgba(255,255,255,0.08)",
+  background: "rgba(3, 3, 8, 0.6)",
+  border: "1px solid rgba(212,168,83,0.08)",
   outline: "none",
   transition: "border-color 0.2s",
 };
@@ -77,16 +77,16 @@ function BookingForm() {
       <div
         style={{
           background: "var(--color-bg-card)",
-          border: "1px solid rgba(255,255,255,0.04)",
+          border: "1px solid rgba(212,168,83,0.04)",
           padding: "clamp(1.5rem, 3vw, 2.5rem)",
           textAlign: "center",
         }}
       >
         <p
           className="heading-section mb-3"
-          style={{ color: "var(--color-text-secondary)" }}
+          style={{ color: "var(--color-accent-gold)" }}
         >
-          SIGNAL RECEIVED
+          MESSAGE RECEIVED
         </p>
         <p className="body-text">
           Your request came through. I will get back to you within 24 hours.
@@ -100,7 +100,7 @@ function BookingForm() {
       onSubmit={handleSubmit}
       style={{
         background: "var(--color-bg-card)",
-        border: "1px solid rgba(255,255,255,0.04)",
+        border: "1px solid rgba(212,168,83,0.04)",
         padding: "clamp(1.5rem, 3vw, 2.5rem)",
       }}
     >
@@ -118,8 +118,8 @@ function BookingForm() {
             value={form.name}
             onChange={handleChange}
             style={inputStyle}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
           />
         </div>
 
@@ -134,8 +134,8 @@ function BookingForm() {
             value={form.email}
             onChange={handleChange}
             style={inputStyle}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
           />
         </div>
 
@@ -149,8 +149,8 @@ function BookingForm() {
             value={form.phone}
             onChange={handleChange}
             style={inputStyle}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
           />
         </div>
 
@@ -168,12 +168,12 @@ function BookingForm() {
               appearance: "none",
               cursor: "pointer",
             }}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
           >
             <option value="" disabled>Select one</option>
             {PROJECT_TYPES.map((type) => (
-              <option key={type} value={type} style={{ background: "#111", color: "#eee" }}>
+              <option key={type} value={type} style={{ background: "#0e0e1a", color: "#e8e4df" }}>
                 {type}
               </option>
             ))}
@@ -191,8 +191,8 @@ function BookingForm() {
             value={form.details}
             onChange={handleChange}
             style={{ ...inputStyle, resize: "vertical" }}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
           />
         </div>
 
@@ -208,25 +208,25 @@ function BookingForm() {
             fontWeight: 600,
             letterSpacing: "0.15em",
             textTransform: "uppercase",
-            color: "var(--color-text-primary)",
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.1)",
+            color: "var(--color-accent-gold)",
+            background: "rgba(212,168,83,0.06)",
+            border: "1px solid rgba(212,168,83,0.15)",
             cursor: status === "sending" ? "wait" : "pointer",
             transition: "all 0.2s",
             opacity: status === "sending" ? 0.5 : 1,
           }}
           onMouseEnter={(e) => {
             if (status !== "sending") {
-              e.currentTarget.style.background = "rgba(255,255,255,0.12)";
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+              e.currentTarget.style.background = "rgba(212,168,83,0.12)";
+              e.currentTarget.style.borderColor = "rgba(212,168,83,0.3)";
             }
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+            e.currentTarget.style.background = "rgba(212,168,83,0.06)";
+            e.currentTarget.style.borderColor = "rgba(212,168,83,0.15)";
           }}
         >
-          {status === "sending" ? "Transmitting..." : "Send Request"}
+          {status === "sending" ? "Sending..." : "Send Request"}
         </button>
 
         {status === "error" && (
@@ -276,21 +276,17 @@ const SOCIALS = [
 
 export default function ContactContent() {
   return (
-    <PageShell
-      bgImage="/images/tv-eyes-1.webp"
-      bgImageMobile="/images/tv-eyes-1-mobile.webp"
-      bgAlt="Eyes watching through CRT television static — contact Dead Pixel Design"
-    >
+    <PageShell>
       <div style={{ marginTop: "-2rem" }}>
-        <p className="heading-section mb-3">TRANSMIT</p>
+        <p className="heading-section mb-3">CONTACT</p>
         <h1
-          className="heading-display crt-text mb-4"
+          className="heading-display mb-4"
           style={{
             fontSize: "clamp(1.6rem, 5vw, 3.2rem)",
             color: "var(--color-text-primary)",
           }}
         >
-          Lock In
+          Let&apos;s Talk
         </h1>
         <p className="body-text mb-12" style={{ maxWidth: "500px" }}>
           Got a project? Got a question? Got a half-baked idea that might be
@@ -310,7 +306,7 @@ export default function ContactContent() {
             variants={fadeUp}
             style={{
               background: "var(--color-bg-card)",
-              border: "1px solid rgba(255,255,255,0.04)",
+              border: "1px solid rgba(212,168,83,0.04)",
               padding: "clamp(1.5rem, 3vw, 2.5rem)",
             }}
           >
@@ -332,9 +328,8 @@ export default function ContactContent() {
               </p>
               <a
                 href="tel:+12076948691"
-                className="crt-text"
                 style={{
-                  fontFamily: "var(--font-brand)",
+                  fontFamily: "var(--font-display)",
                   fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
                   fontWeight: 600,
                   color: "var(--color-text-primary)",
@@ -373,7 +368,7 @@ export default function ContactContent() {
                   transition: "color 0.2s",
                 }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "var(--color-text-primary)")
+                  (e.currentTarget.style.color = "var(--color-accent-gold)")
                 }
                 onMouseLeave={(e) =>
                   (e.currentTarget.style.color = "var(--color-text-secondary)")
@@ -425,7 +420,7 @@ export default function ContactContent() {
             <div
               style={{
                 background: "var(--color-bg-card)",
-                border: "1px solid rgba(255,255,255,0.04)",
+                border: "1px solid rgba(212,168,83,0.04)",
                 padding: "clamp(1.5rem, 3vw, 2.5rem)",
               }}
             >
@@ -441,7 +436,7 @@ export default function ContactContent() {
                     style={{
                       textDecoration: "none",
                       padding: "6px 0",
-                      borderBottom: "1px solid rgba(255,255,255,0.03)",
+                      borderBottom: "1px solid rgba(212,168,83,0.03)",
                     }}
                   >
                     <span
@@ -454,7 +449,7 @@ export default function ContactContent() {
                         textTransform: "uppercase",
                         transition: "color 0.2s",
                       }}
-                      className="group-hover:!text-[var(--color-text-secondary)]"
+                      className="group-hover:!text-[var(--color-accent-gold)]"
                     >
                       {social.name}
                     </span>
@@ -478,7 +473,7 @@ export default function ContactContent() {
             <div
               style={{
                 background: "var(--color-bg-card)",
-                border: "1px solid rgba(255,255,255,0.04)",
+                border: "1px solid rgba(212,168,83,0.04)",
                 padding: "clamp(1.5rem, 3vw, 2.5rem)",
               }}
             >

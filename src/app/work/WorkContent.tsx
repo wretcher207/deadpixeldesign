@@ -106,15 +106,11 @@ const PROJECTS = [
 
 export default function WorkContent() {
   return (
-    <PageShell
-      bgImage="/images/tv-shadow-2.webp"
-      bgImageMobile="/images/tv-shadow-2-mobile.webp"
-      bgAlt="A shadowy figure visible through CRT television static"
-    >
+    <PageShell>
       <div style={{ marginTop: "-2rem" }}>
-        <p className="heading-section mb-3">BROADCAST</p>
+        <p className="heading-section mb-3">PORTFOLIO</p>
         <h1
-          className="heading-display crt-text mb-4"
+          className="heading-display mb-4"
           style={{
             fontSize: "clamp(1.6rem, 5vw, 3.2rem)",
             color: "var(--color-text-primary)",
@@ -142,12 +138,12 @@ export default function WorkContent() {
               className="group relative"
               style={{
                 background: "var(--color-bg-card)",
-                border: "1px solid rgba(255,255,255,0.04)",
+                border: "1px solid rgba(212,168,83,0.04)",
                 padding: "clamp(1.5rem, 3vw, 2.5rem)",
                 transition: "border-color 0.3s ease",
               }}
               whileHover={{
-                borderColor: "rgba(255,255,255,0.08)",
+                borderColor: "rgba(212,168,83,0.12)",
               }}
             >
               {/* Header row */}
@@ -242,7 +238,7 @@ export default function WorkContent() {
                       letterSpacing: "0.08em",
                       color: "var(--color-text-dim)",
                       padding: "4px 10px",
-                      border: "1px solid rgba(255,255,255,0.08)",
+                      border: "1px solid rgba(212,168,83,0.08)",
                       textTransform: "uppercase",
                     }}
                   >
@@ -250,16 +246,6 @@ export default function WorkContent() {
                   </span>
                 ))}
               </div>
-
-              {/* Bottom accent line */}
-              <div
-                className="absolute bottom-0 left-0 h-[1px]"
-                style={{
-                  width: "0%",
-                  background: "var(--color-text-dim)",
-                  transition: "width 0.5s ease",
-                }}
-              />
             </motion.article>
           ))}
         </motion.div>

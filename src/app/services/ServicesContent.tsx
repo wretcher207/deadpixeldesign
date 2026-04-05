@@ -148,7 +148,7 @@ function PackageCard({
       className="relative flex flex-col"
       style={{
         background: "var(--color-bg-card)",
-        border: "1px solid rgba(255,255,255,0.04)",
+        border: "1px solid rgba(212,168,83,0.04)",
         padding: "clamp(1.25rem, 2.5vw, 2rem)",
       }}
     >
@@ -160,7 +160,7 @@ function PackageCard({
       </p>
 
       <p
-        className="heading-display crt-text mb-4"
+        className="heading-display mb-4"
         style={{
           fontSize: "clamp(1.3rem, 3vw, 1.8rem)",
           color: "var(--color-text-primary)",
@@ -182,7 +182,7 @@ function PackageCard({
               lineHeight: 1.6,
             }}
           >
-            <span style={{ color: "var(--color-text-ghost)", flexShrink: 0 }}>+</span>
+            <span style={{ color: "var(--color-accent-gold)", flexShrink: 0, opacity: 0.5 }}>+</span>
             {d}
           </li>
         ))}
@@ -207,16 +207,12 @@ function PackageCard({
 
 export default function ServicesContent() {
   return (
-    <PageShell
-      bgImage="/images/tv-shadow-1.webp"
-      bgImageMobile="/images/tv-shadow-1-mobile.webp"
-      bgAlt="A dark silhouette visible through CRT television static"
-    >
+    <PageShell>
       <div style={{ marginTop: "-2rem" }}>
         {/* Page header */}
-        <p className="heading-section mb-3">FREQUENCY</p>
+        <p className="heading-section mb-3">SERVICES</p>
         <h1
-          className="heading-display crt-text mb-4"
+          className="heading-display mb-4"
           style={{
             fontSize: "clamp(1.6rem, 5vw, 3.2rem)",
             color: "var(--color-text-primary)",
@@ -261,7 +257,7 @@ export default function ServicesContent() {
             transition={{ delay: 0.2 }}
             style={{
               background: "var(--color-bg-card)",
-              border: "1px solid rgba(255,255,255,0.04)",
+              border: "1px solid rgba(212,168,83,0.04)",
               padding: "clamp(1.25rem, 2.5vw, 1.75rem)",
               display: "flex",
               flexWrap: "wrap",
@@ -306,7 +302,7 @@ export default function ServicesContent() {
         <div
           style={{
             height: "1px",
-            background: "rgba(255,255,255,0.05)",
+            background: "rgba(212,168,83,0.08)",
             marginBottom: "4rem",
           }}
         />
@@ -344,13 +340,13 @@ export default function ServicesContent() {
           transition={{ delay: 0.3 }}
         >
           <p
-            className="heading-display crt-text mb-4"
+            className="heading-display mb-4"
             style={{
               fontSize: "clamp(1.1rem, 3vw, 1.8rem)",
               color: "var(--color-text-primary)",
             }}
           >
-            Ready to transmit?
+            Ready to get started?
           </p>
           <Link
             href="/contact"
@@ -360,18 +356,18 @@ export default function ServicesContent() {
               fontSize: "0.7rem",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
-              color: "var(--color-text-primary)",
+              color: "var(--color-accent-gold)",
               padding: "12px 32px",
-              border: "1px solid rgba(255,255,255,0.15)",
+              border: "1px solid rgba(212,168,83,0.2)",
               transition: "all 0.3s ease",
               textDecoration: "none",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-              e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+              e.currentTarget.style.borderColor = "rgba(212,168,83,0.4)";
+              e.currentTarget.style.background = "rgba(212,168,83,0.06)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+              e.currentTarget.style.borderColor = "rgba(212,168,83,0.2)";
               e.currentTarget.style.background = "transparent";
             }}
           >

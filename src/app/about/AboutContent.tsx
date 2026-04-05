@@ -6,21 +6,17 @@ import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 
 export default function AboutContent() {
   return (
-    <PageShell
-      bgImage="/images/tv-eyes-2.webp"
-      bgImageMobile="/images/tv-eyes-2-mobile.webp"
-      bgAlt="Eyes watching through CRT television static"
-    >
+    <PageShell>
       <div style={{ marginTop: "-2rem" }}>
-        <p className="heading-section mb-3">ORIGIN</p>
+        <p className="heading-section mb-3">ABOUT</p>
         <h1
-          className="heading-display crt-text mb-6"
+          className="heading-display mb-6"
           style={{
             fontSize: "clamp(1.6rem, 5vw, 3.2rem)",
             color: "var(--color-text-primary)",
           }}
         >
-          Who&apos;s Behind the Static
+          Who&apos;s Behind the Signal
         </h1>
 
         <motion.div
@@ -59,8 +55,7 @@ export default function AboutContent() {
                 managers, no ticket systems, no bloat.
               </p>
               <p style={{ color: "var(--color-text-primary)" }}>
-                &quot;We don&apos;t optimize. We haunt.&quot; isn&apos;t just a tagline. It means
-                the work should leave a mark. A website that actually brings in
+                The work should leave a mark. A website that actually brings in
                 calls. A mix that sounds like you, but better. A tool that saves
                 real time. Things that matter after the browser tab closes.
               </p>
@@ -72,7 +67,7 @@ export default function AboutContent() {
             <div
               style={{
                 background: "var(--color-bg-card)",
-                border: "1px solid rgba(255,255,255,0.04)",
+                border: "1px solid rgba(212,168,83,0.04)",
                 padding: "1.5rem",
               }}
             >
@@ -117,7 +112,7 @@ export default function AboutContent() {
               className="mt-6"
               style={{
                 background: "var(--color-bg-card)",
-                border: "1px solid rgba(255,255,255,0.04)",
+                border: "1px solid rgba(212,168,83,0.04)",
                 padding: "1.5rem",
               }}
             >

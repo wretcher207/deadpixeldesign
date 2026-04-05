@@ -1,29 +1,25 @@
 import type { Metadata } from "next";
-import { VT323 } from "next/font/google";
-import localFont from "next/font/local";
+import { Cormorant, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/layout/Navigation";
+import ConstellationNav from "@/components/layout/ConstellationNav";
 import Footer from "@/components/layout/Footer";
-import AmbientStatic from "@/components/audio/AmbientStatic";
 import {
   LocalBusinessJsonLd,
   WebSiteJsonLd,
   OrganizationJsonLd,
 } from "@/components/seo/JsonLd";
 
-const vt323 = VT323({
+const cormorant = Cormorant({
   subsets: ["latin"],
-  variable: "--font-body",
-  weight: "400",
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-const cryptScript = localFont({
-  src: [
-    { path: "../fonts/CryptScript-AllCaps.ttf", weight: "700" },
-    { path: "../fonts/CryptScript-Regular.ttf", weight: "400" },
-  ],
-  variable: "--font-brand",
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-mono",
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -56,7 +52,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://deadpixeldesign.com",
     siteName: "Dead Pixel Design",
-    title: "Dead Pixel Design — We don't optimize. We haunt.",
+    title: "Dead Pixel Design — Web Design, Audio Engineering & Creative Technology",
     description:
       "Web design, audio engineering, mixing, mastering, and creative technology from Maine. We build things that stay with you.",
     images: [
@@ -108,17 +104,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${vt323.variable} ${cryptScript.variable}`}
+      className={`${cormorant.variable} ${ibmPlexMono.variable}`}
     >
       <head>
         <LocalBusinessJsonLd />
         <WebSiteJsonLd />
         <OrganizationJsonLd />
       </head>
-      <body className="scanlines grain-overlay vignette">
-        <Navigation />
-        <AmbientStatic volume={0.06} />
-        <main className="min-h-screen pt-14">{children}</main>
+      <body>
+        <ConstellationNav />
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>
