@@ -33,6 +33,14 @@
   /* === Spacing === */
   --spacing-section: clamp(4rem, 10vh, 8rem);
   --spacing-content: clamp(1.5rem, 4vw, 3rem);
+
+  /* === Motion === */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
 }
 
 /* ============================================
@@ -59,6 +67,11 @@ body {
   color: var(--color-text-primary);
 }
 
+:focus-visible {
+  outline: 1px solid var(--color-accent-gold);
+  outline-offset: 2px;
+}
+
 /* ============================================
    TYPOGRAPHY UTILITIES
    ============================================ */
@@ -70,11 +83,17 @@ body {
   line-height: 1.1;
 }
 
+@media (max-width: 640px) {
+  .heading-display {
+    line-height: 1.15;
+  }
+}
+
 .heading-section {
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 400;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-text-dim);
 }
@@ -102,12 +121,6 @@ body {
           drop-shadow(0 0 20px var(--color-accent-glow));
 }
 
-.constellation-line {
-  stroke: var(--color-line-faint);
-  stroke-width: 1;
-  transition: stroke 0.4s ease;
-}
-
 @keyframes twinkle {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 1; }
@@ -116,21 +129,6 @@ body {
 @keyframes subtle-drift {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
-}
-
-/* ============================================
-   PAGE TRANSITION
-   ============================================ */
-
-.page-enter {
-  opacity: 0;
-  filter: blur(4px);
-}
-
-.page-enter-active {
-  opacity: 1;
-  filter: blur(0);
-  transition: opacity 0.6s ease-out, filter 0.6s ease-out;
 }
 
 /* ============================================
@@ -155,7 +153,7 @@ body {
 }
 
 /* ============================================
-   RESPONSIVE UTILITIES
+   LAYOUT
    ============================================ */
 
 .content-container {
@@ -165,14 +163,89 @@ body {
 }
 
 /* ============================================
-   CARD STYLES
+   INTERACTIVE UTILITIES
    ============================================ */
 
 .card-hover {
-  transition: border-color 0.3s ease, background 0.3s ease;
+  transition: border-color var(--duration-base) var(--ease-smooth),
+              background var(--duration-base) var(--ease-smooth),
+              transform var(--duration-base) var(--ease-snappy);
 }
 
 .card-hover:hover {
   border-color: rgba(212, 168, 83, 0.15);
   background: rgba(14, 14, 26, 0.85);
+}
+
+.card-cosmic {
+  background: var(--color-bg-card);
+  border: 1px solid rgba(212, 168, 83, 0.04);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.link-gold {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-base) var(--ease-smooth);
+}
+
+.link-gold:hover {
+  color: var(--color-accent-gold);
+}
+
+.link-dim {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-base) var(--ease-smooth);
+}
+
+.link-dim:hover {
+  color: var(--color-text-primary);
+}
+
+.btn-ghost {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  padding: 12px 32px;
+  border: 1px solid rgba(212, 168, 83, 0.2);
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--duration-base) var(--ease-smooth),
+              background var(--duration-base) var(--ease-smooth);
+}
+
+.btn-ghost:hover {
+  border-color: rgba(212, 168, 83, 0.4);
+  background: rgba(212, 168, 83, 0.06);
+}
+
+.input-cosmic {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text-primary);
+  background: rgba(3, 3, 8, 0.6);
+  border: 1px solid rgba(212, 168, 83, 0.08);
+  outline: none;
+  transition: border-color var(--duration-base) var(--ease-smooth);
+}
+
+.input-cosmic:focus {
+  border-color: rgba(212, 168, 83, 0.25);
+}
+
+.label-micro {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-ghost);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
 }

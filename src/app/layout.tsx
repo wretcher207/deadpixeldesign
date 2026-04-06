@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://deadpixeldesign.com",
     siteName: "Dead Pixel Design",
-    title: "Dead Pixel Design — Web Design, Audio Engineering & Creative Technology",
+    title: "Custom Web Design, Audio Engineering, and AI Systems — Dead Pixel Design",
     description:
-      "Web design, audio engineering, mixing, mastering, and creative technology from Maine. We build things that stay with you.",
+      "Custom web design, audio engineering, and AI systems from Maine. We build things that stay with you.",
     images: [
       {
         url: "/images/og-image.webp",
@@ -66,9 +66,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dead Pixel Design",
+    title: "Custom Web Design, Audio Engineering, and AI Systems — Dead Pixel Design",
     description:
-      "Web design, audio engineering, and creative technology from Maine.",
+      "Custom web design, audio engineering, and AI systems from Maine.",
     images: ["/images/og-image.webp"],
   },
   robots: {

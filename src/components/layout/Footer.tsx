@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer
@@ -12,7 +14,7 @@ export default function Footer() {
     >
       <div className="content-container flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
         <div className="flex items-center gap-3">
-          <img
+          <Image
             src="/images/logo-badge-sm.png"
             alt="Dead Pixel Design"
             width={20}
@@ -23,7 +25,7 @@ export default function Footer() {
             style={{
               fontFamily: "var(--font-body)",
               fontSize: "0.65rem",
-              color: "var(--color-text-ghost)",
+              color: "var(--color-text-dim)",
               letterSpacing: "0.1em",
             }}
           >
@@ -36,21 +38,16 @@ export default function Footer() {
           style={{
             fontFamily: "var(--font-body)",
             fontSize: "0.6rem",
-            color: "var(--color-text-ghost)",
+            color: "var(--color-text-dim)",
             letterSpacing: "0.1em",
           }}
         >
-          <span>Maine, USA</span>
+          <span style={{ padding: "8px 0" }}>Maine, USA</span>
           <span style={{ opacity: 0.3 }}>|</span>
           <a
             href="mailto:david@deadpixeldesign.com"
-            style={{ color: "var(--color-text-dim)", transition: "color 0.2s" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "var(--color-text-secondary)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.color = "var(--color-text-dim)")
-            }
+            className="link-dim"
+            style={{ padding: "8px 0" }}
           >
             david@deadpixeldesign.com
           </a>

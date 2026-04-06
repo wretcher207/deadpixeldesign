@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import PageShell from "@/components/layout/PageShell";
-import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
+import { fadeUp, staggerDeep, viewportOnce } from "@/lib/animations";
 
 const PROJECTS = [
   {
@@ -126,7 +126,7 @@ export default function WorkContent() {
         {/* Project Grid */}
         <motion.div
           className="grid grid-cols-1 gap-8"
-          variants={stagger}
+          variants={staggerDeep}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -135,15 +135,22 @@ export default function WorkContent() {
             <motion.article
               key={project.title}
               variants={fadeUp}
-              className="group relative"
+              className="group relative card-cosmic"
+              initial="rest"
+              whileHover="hover"
+              animate="rest"
               style={{
-                background: "var(--color-bg-card)",
-                border: "1px solid rgba(212,168,83,0.04)",
-                padding: "clamp(1.5rem, 3vw, 2.5rem)",
-                transition: "border-color 0.3s ease",
+                transition: "border-color 0.3s var(--ease-snappy), background 0.3s var(--ease-snappy), transform 0.3s var(--ease-snappy)",
               }}
-              whileHover={{
-                borderColor: "rgba(212,168,83,0.12)",
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(212,168,83,0.15)";
+                e.currentTarget.style.background = "rgba(14,14,26,0.85)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(212,168,83,0.04)";
+                e.currentTarget.style.background = "";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               {/* Header row */}

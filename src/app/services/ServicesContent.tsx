@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import PageShell from "@/components/layout/PageShell";
-import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
+import { fadeUp, scaleReveal, stagger, staggerDeep, viewportOnce } from "@/lib/animations";
 
 const WEB_PACKAGES = [
   {
@@ -144,12 +144,12 @@ function PackageCard({
 }) {
   return (
     <motion.div
-      variants={fadeUp}
-      className="relative flex flex-col"
-      style={{
-        background: "var(--color-bg-card)",
-        border: "1px solid rgba(212,168,83,0.04)",
-        padding: "clamp(1.25rem, 2.5vw, 2rem)",
+      variants={scaleReveal}
+      className="relative flex flex-col card-cosmic"
+      whileHover={{
+        borderColor: "rgba(212,168,83,0.15)",
+        y: -2,
+        transition: { duration: 0.3 },
       }}
     >
       <p
@@ -236,9 +236,9 @@ export default function ServicesContent() {
           <motion.div
             className="grid grid-cols-1 gap-6"
             style={{
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(260px, 100%), 1fr))",
             }}
-            variants={stagger}
+            variants={staggerDeep}
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
@@ -250,15 +250,12 @@ export default function ServicesContent() {
 
           {/* Maintenance */}
           <motion.div
-            className="mt-6"
+            className="mt-6 card-cosmic"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             style={{
-              background: "var(--color-bg-card)",
-              border: "1px solid rgba(212,168,83,0.04)",
-              padding: "clamp(1.25rem, 2.5vw, 1.75rem)",
               display: "flex",
               flexWrap: "wrap",
               gap: "1rem",
@@ -318,9 +315,9 @@ export default function ServicesContent() {
           <motion.div
             className="grid grid-cols-1 gap-6"
             style={{
-              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(240px, 100%), 1fr))",
             }}
-            variants={stagger}
+            variants={staggerDeep}
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
@@ -348,29 +345,7 @@ export default function ServicesContent() {
           >
             Ready to get started?
           </p>
-          <Link
-            href="/contact"
-            style={{
-              display: "inline-block",
-              fontFamily: "var(--font-body)",
-              fontSize: "0.7rem",
-              letterSpacing: "0.25em",
-              textTransform: "uppercase",
-              color: "var(--color-accent-gold)",
-              padding: "12px 32px",
-              border: "1px solid rgba(212,168,83,0.2)",
-              transition: "all 0.3s ease",
-              textDecoration: "none",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(212,168,83,0.4)";
-              e.currentTarget.style.background = "rgba(212,168,83,0.06)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(212,168,83,0.2)";
-              e.currentTarget.style.background = "transparent";
-            }}
-          >
+          <Link href="/contact" className="btn-ghost">
             Head to the contact page
           </Link>
         </motion.div>

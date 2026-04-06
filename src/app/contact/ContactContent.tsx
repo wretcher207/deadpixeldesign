@@ -14,28 +14,6 @@ const PROJECT_TYPES = [
   "Other",
 ];
 
-const inputStyle: React.CSSProperties = {
-  width: "100%",
-  padding: "0.75rem 1rem",
-  fontFamily: "var(--font-body)",
-  fontSize: "0.85rem",
-  color: "var(--color-text-primary)",
-  background: "rgba(3, 3, 8, 0.6)",
-  border: "1px solid rgba(212,168,83,0.08)",
-  outline: "none",
-  transition: "border-color 0.2s",
-};
-
-const labelStyle: React.CSSProperties = {
-  fontFamily: "var(--font-body)",
-  fontSize: "0.6rem",
-  letterSpacing: "0.15em",
-  color: "var(--color-text-ghost)",
-  textTransform: "uppercase",
-  marginBottom: "0.5rem",
-  display: "block",
-};
-
 function BookingForm() {
   const [form, setForm] = useState({
     name: "",
@@ -74,14 +52,7 @@ function BookingForm() {
 
   if (status === "sent") {
     return (
-      <div
-        style={{
-          background: "var(--color-bg-card)",
-          border: "1px solid rgba(212,168,83,0.04)",
-          padding: "clamp(1.5rem, 3vw, 2.5rem)",
-          textAlign: "center",
-        }}
-      >
+      <div className="card-cosmic" style={{ textAlign: "center" }}>
         <p
           className="heading-section mb-3"
           style={{ color: "var(--color-accent-gold)" }}
@@ -96,20 +67,13 @@ function BookingForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        background: "var(--color-bg-card)",
-        border: "1px solid rgba(212,168,83,0.04)",
-        padding: "clamp(1.5rem, 3vw, 2.5rem)",
-      }}
-    >
+    <form onSubmit={handleSubmit} className="card-cosmic">
       <p className="heading-section mb-6">BOOK A PROJECT</p>
 
       <div className="space-y-5">
         {/* Name */}
         <div>
-          <label htmlFor="name" style={labelStyle}>Name *</label>
+          <label htmlFor="name" className="label-micro">Name *</label>
           <input
             id="name"
             name="name"
@@ -117,15 +81,13 @@ function BookingForm() {
             required
             value={form.name}
             onChange={handleChange}
-            style={inputStyle}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
+            className="input-cosmic"
           />
         </div>
 
         {/* Email */}
         <div>
-          <label htmlFor="email" style={labelStyle}>Email *</label>
+          <label htmlFor="email" className="label-micro">Email *</label>
           <input
             id="email"
             name="email"
@@ -133,43 +95,34 @@ function BookingForm() {
             required
             value={form.email}
             onChange={handleChange}
-            style={inputStyle}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
+            className="input-cosmic"
           />
         </div>
 
         {/* Phone */}
         <div>
-          <label htmlFor="phone" style={labelStyle}>Phone</label>
+          <label htmlFor="phone" className="label-micro">Phone</label>
           <input
             id="phone"
             name="phone"
             type="tel"
             value={form.phone}
             onChange={handleChange}
-            style={inputStyle}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
+            className="input-cosmic"
           />
         </div>
 
         {/* Project Type */}
         <div>
-          <label htmlFor="projectType" style={labelStyle}>Project Type *</label>
+          <label htmlFor="projectType" className="label-micro">Project Type *</label>
           <select
             id="projectType"
             name="projectType"
             required
             value={form.projectType}
             onChange={handleChange}
-            style={{
-              ...inputStyle,
-              appearance: "none",
-              cursor: "pointer",
-            }}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
+            className="input-cosmic"
+            style={{ appearance: "none", cursor: "pointer" }}
           >
             <option value="" disabled>Select one</option>
             {PROJECT_TYPES.map((type) => (
@@ -182,7 +135,7 @@ function BookingForm() {
 
         {/* Details */}
         <div>
-          <label htmlFor="details" style={labelStyle}>Tell me about your project *</label>
+          <label htmlFor="details" className="label-micro">Tell me about your project *</label>
           <textarea
             id="details"
             name="details"
@@ -190,9 +143,8 @@ function BookingForm() {
             rows={4}
             value={form.details}
             onChange={handleChange}
-            style={{ ...inputStyle, resize: "vertical" }}
-            onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.25)")}
-            onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(212,168,83,0.08)")}
+            className="input-cosmic"
+            style={{ resize: "vertical" }}
           />
         </div>
 
@@ -200,30 +152,15 @@ function BookingForm() {
         <button
           type="submit"
           disabled={status === "sending"}
+          className="btn-ghost"
           style={{
             width: "100%",
             padding: "0.85rem",
-            fontFamily: "var(--font-body)",
-            fontSize: "0.7rem",
             fontWeight: 600,
             letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "var(--color-accent-gold)",
-            background: "rgba(212,168,83,0.06)",
-            border: "1px solid rgba(212,168,83,0.15)",
-            cursor: status === "sending" ? "wait" : "pointer",
-            transition: "all 0.2s",
             opacity: status === "sending" ? 0.5 : 1,
-          }}
-          onMouseEnter={(e) => {
-            if (status !== "sending") {
-              e.currentTarget.style.background = "rgba(212,168,83,0.12)";
-              e.currentTarget.style.borderColor = "rgba(212,168,83,0.3)";
-            }
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(212,168,83,0.06)";
-            e.currentTarget.style.borderColor = "rgba(212,168,83,0.15)";
+            cursor: status === "sending" ? "wait" : "pointer",
+            background: "rgba(212,168,83,0.06)",
           }}
         >
           {status === "sending" ? "Sending..." : "Send Request"}
@@ -302,40 +239,21 @@ export default function ContactContent() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
         >
           {/* Direct contact */}
-          <motion.div
-            variants={fadeUp}
-            style={{
-              background: "var(--color-bg-card)",
-              border: "1px solid rgba(212,168,83,0.04)",
-              padding: "clamp(1.5rem, 3vw, 2.5rem)",
-            }}
-          >
+          <motion.div variants={fadeUp} className="card-cosmic">
             <p className="heading-section mb-6">DIRECT LINE</p>
 
             {/* Phone */}
             <div className="mb-6">
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.15em",
-                  color: "var(--color-text-ghost)",
-                  textTransform: "uppercase",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Phone
-              </p>
+              <p className="label-micro">Phone</p>
               <a
                 href="tel:+12076948691"
+                className="block heading-display"
                 style={{
-                  fontFamily: "var(--font-display)",
                   fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
                   fontWeight: 600,
                   color: "var(--color-text-primary)",
                   textDecoration: "none",
-                  display: "block",
-                  transition: "opacity 0.2s",
+                  transition: "opacity var(--duration-base) var(--ease-smooth)",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
                 onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
@@ -346,33 +264,14 @@ export default function ContactContent() {
 
             {/* Email */}
             <div className="mb-6">
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.15em",
-                  color: "var(--color-text-ghost)",
-                  textTransform: "uppercase",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Email
-              </p>
+              <p className="label-micro">Email</p>
               <a
                 href="mailto:david@deadpixeldesign.com"
+                className="link-gold"
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "0.9rem",
-                  color: "var(--color-text-secondary)",
-                  textDecoration: "none",
-                  transition: "color 0.2s",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "var(--color-accent-gold)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "var(--color-text-secondary)")
-                }
               >
                 david@deadpixeldesign.com
               </a>
@@ -380,18 +279,7 @@ export default function ContactContent() {
 
             {/* Location */}
             <div>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.15em",
-                  color: "var(--color-text-ghost)",
-                  textTransform: "uppercase",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Based In
-              </p>
+              <p className="label-micro">Based In</p>
               <p
                 style={{
                   fontFamily: "var(--font-body)",
@@ -417,13 +305,7 @@ export default function ContactContent() {
           {/* Social + Music */}
           <motion.div variants={fadeUp} className="space-y-8">
             {/* Social links */}
-            <div
-              style={{
-                background: "var(--color-bg-card)",
-                border: "1px solid rgba(212,168,83,0.04)",
-                padding: "clamp(1.5rem, 3vw, 2.5rem)",
-              }}
-            >
+            <div className="card-cosmic">
               <p className="heading-section mb-5">FIND US</p>
               <div className="space-y-3">
                 {SOCIALS.map((social) => (
@@ -435,7 +317,7 @@ export default function ContactContent() {
                     className="flex items-center justify-between group"
                     style={{
                       textDecoration: "none",
-                      padding: "6px 0",
+                      padding: "8px 0",
                       borderBottom: "1px solid rgba(212,168,83,0.03)",
                     }}
                   >
@@ -447,7 +329,7 @@ export default function ContactContent() {
                         color: "var(--color-text-dim)",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
-                        transition: "color 0.2s",
+                        transition: "color var(--duration-base) var(--ease-smooth)",
                       }}
                       className="group-hover:!text-[var(--color-accent-gold)]"
                     >
@@ -458,7 +340,7 @@ export default function ContactContent() {
                         fontFamily: "var(--font-body)",
                         fontSize: "0.65rem",
                         color: "var(--color-text-ghost)",
-                        transition: "color 0.2s",
+                        transition: "color var(--duration-base) var(--ease-smooth)",
                       }}
                       className="group-hover:!text-[var(--color-text-dim)]"
                     >
@@ -470,13 +352,7 @@ export default function ContactContent() {
             </div>
 
             {/* Spotify Embed */}
-            <div
-              style={{
-                background: "var(--color-bg-card)",
-                border: "1px solid rgba(212,168,83,0.04)",
-                padding: "clamp(1.5rem, 3vw, 2.5rem)",
-              }}
-            >
+            <div className="card-cosmic">
               <p className="heading-section mb-4">LISTEN</p>
               <iframe
                 style={{ borderRadius: 8 }}
@@ -492,14 +368,14 @@ export default function ContactContent() {
           </motion.div>
         </motion.div>
 
-        {/* Booking Form */}
+        {/* Booking Form — centered */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
           className="mb-16"
-          style={{ maxWidth: "600px" }}
+          style={{ maxWidth: "600px", margin: "0 auto" }}
         >
           <BookingForm />
         </motion.div>

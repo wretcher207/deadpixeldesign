@@ -308,7 +308,7 @@ function OverlayConstellation({
                   : "rgba(212, 168, 83, 0.06)"
               }
               strokeWidth={1}
-              style={{ transition: "stroke 0.3s ease" }}
+              style={{ transition: "stroke var(--duration-base) var(--ease-smooth)" }}
             />
           );
         })}
@@ -332,6 +332,9 @@ function OverlayConstellation({
               left: `${pos.x}%`,
               top: `${pos.y}%`,
               transform: "translate(-50%, -50%)",
+              minWidth: "44px",
+              minHeight: "44px",
+              justifyContent: "center",
             }}
             aria-label={`Navigate to ${ch.label}`}
           >

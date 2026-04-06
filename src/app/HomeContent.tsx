@@ -7,9 +7,14 @@ import ConstellationNav from "@/components/layout/ConstellationNav";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 
 function useVideoFadeLoop(ref: React.RefObject<HTMLVideoElement | null>, fadeDuration = 1.5) {
-  const handleTimeUpdate = useCallback(() => {
+  const rafRef = useRef<number>(0);
+
+  const tick = useCallback(() => {
     const video = ref.current;
-    if (!video || !video.duration) return;
+    if (!video || !video.duration) {
+      rafRef.current = requestAnimationFrame(tick);
+      return;
+    }
     const timeLeft = video.duration - video.currentTime;
     if (timeLeft <= fadeDuration) {
       video.style.opacity = String(timeLeft / fadeDuration);
@@ -18,15 +23,16 @@ function useVideoFadeLoop(ref: React.RefObject<HTMLVideoElement | null>, fadeDur
     } else {
       video.style.opacity = "1";
     }
+    rafRef.current = requestAnimationFrame(tick);
   }, [ref, fadeDuration]);
 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
     video.style.opacity = "0";
-    video.addEventListener("timeupdate", handleTimeUpdate);
-    return () => video.removeEventListener("timeupdate", handleTimeUpdate);
-  }, [ref, handleTimeUpdate]);
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [ref, tick]);
 }
 
 export default function HomeContent() {
@@ -46,7 +52,7 @@ export default function HomeContent() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover md:hidden transition-opacity duration-300"
+          className="absolute inset-0 w-full h-full object-cover md:hidden"
         >
           <source src="/videos/black-hole.mp4" type="video/mp4" />
         </video>
@@ -58,7 +64,7 @@ export default function HomeContent() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover hidden md:block transition-opacity duration-300"
+          className="absolute inset-0 w-full h-full object-cover hidden md:block"
         >
           <source src="/videos/black-hole-desktop.mp4" type="video/mp4" />
         </video>
@@ -77,7 +83,7 @@ export default function HomeContent() {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 hidden md:flex"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 hidden md:flex md:flex-col md:items-center md:gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
@@ -113,12 +119,12 @@ export default function HomeContent() {
           padding: "var(--spacing-section) 0",
         }}
       >
-        {/* Gradient transition from hero */}
+        {/* Gradient transition from hero — taller for smoother flow */}
         <div
-          className="absolute top-0 left-0 right-0 h-32 -translate-y-full pointer-events-none"
+          className="absolute top-0 left-0 right-0 h-48 -translate-y-full pointer-events-none"
           style={{
             background:
-              "linear-gradient(to top, var(--color-bg-void), transparent)",
+              "linear-gradient(to top, var(--color-bg-void) 10%, transparent)",
           }}
         />
 
