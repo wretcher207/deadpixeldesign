@@ -102,11 +102,39 @@ const PROJECTS = [
       "Built as a demo for prospective clients",
     ],
   },
+  {
+    category: "Sample Site",
+    year: "2026",
+    title: "Editorial Service Template",
+    description:
+      "A refined editorial-style service website built around elegant typography, spacious composition, and a premium content-first presentation. Designed as a sample for service businesses that need authority without stiffness.",
+    tech: ["Editorial Design", "Service Business", "Responsive UI"],
+    url: "https://editorial-service-template.netlify.app",
+    highlights: [
+      "Editorial-inspired visual hierarchy",
+      "Premium typography and spacing",
+      "Built for service brands with a polished voice",
+    ],
+  },
+  {
+    category: "Sample Site",
+    year: "2026",
+    title: "Cozy Cafe Template",
+    description:
+      "A warm, character-driven cafe website built to feel inviting, tactile, and easy to browse. Designed as a sample concept for food and hospitality clients who need charm without clutter.",
+    tech: ["Cafe", "Hospitality", "Responsive Design"],
+    url: "https://cozy-cafe-template.netlify.app",
+    highlights: [
+      "Cozy hospitality-focused design",
+      "Mobile-friendly menu and location flow",
+      "Strong atmosphere and customer-facing clarity",
+    ],
+  },
 ];
 
 export default function WorkContent() {
   return (
-    <PageShell>
+    <PageShell backgroundVideo="/videos/bg-4.mp4" backgroundPoster="/videos/bg-4-poster.webp">
       <div style={{ marginTop: "-2rem" }}>
         <p className="heading-section mb-3">PORTFOLIO</p>
         <h1

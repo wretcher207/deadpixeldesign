@@ -213,7 +213,7 @@ const SOCIALS = [
 
 export default function ContactContent() {
   return (
-    <PageShell>
+    <PageShell backgroundVideo="/videos/bg-3.mp4" backgroundPoster="/videos/bg-3-poster.webp">
       <div style={{ marginTop: "-2rem" }}>
         <p className="heading-section mb-3">CONTACT</p>
         <h1

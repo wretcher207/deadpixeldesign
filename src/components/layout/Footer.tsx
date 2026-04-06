@@ -25,7 +25,7 @@ export default function Footer() {
             style={{
               fontFamily: "var(--font-body)",
               fontSize: "0.65rem",
-              color: "var(--color-text-dim)",
+              color: "var(--color-text-secondary)",
               letterSpacing: "0.1em",
             }}
           >
@@ -38,7 +38,7 @@ export default function Footer() {
           style={{
             fontFamily: "var(--font-body)",
             fontSize: "0.6rem",
-            color: "var(--color-text-dim)",
+            color: "var(--color-text-secondary)",
             letterSpacing: "0.1em",
           }}
         >

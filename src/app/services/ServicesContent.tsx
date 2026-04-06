@@ -207,7 +207,7 @@ function PackageCard({
 
 export default function ServicesContent() {
   return (
-    <PageShell>
+    <PageShell backgroundVideo="/videos/bg-1.mp4" backgroundPoster="/videos/bg-1-poster.webp">
       <div style={{ marginTop: "-2rem" }}>
         {/* Page header */}
         <p className="heading-section mb-3">SERVICES</p>

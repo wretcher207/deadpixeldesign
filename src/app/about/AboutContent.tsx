@@ -6,7 +6,7 @@ import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 
 export default function AboutContent() {
   return (
-    <PageShell>
+    <PageShell backgroundVideo="/videos/bg-2.mp4" backgroundPoster="/videos/bg-2-poster.webp">
       <div style={{ marginTop: "-2rem" }}>
         <p className="heading-section mb-3">ABOUT</p>
         <h1

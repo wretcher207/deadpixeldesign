@@ -491,6 +491,26 @@ export function PortfolioItemListJsonLd() {
           url: "https://restaurant-sample-01.netlify.app/home_page/code.html",
         },
       },
+      {
+        "@type": "ListItem",
+        position: 8,
+        item: {
+          "@type": "WebSite",
+          name: "Editorial Service Template",
+          description: "A refined editorial-style service website built around elegant typography, spacious composition, and a premium content-first presentation.",
+          url: "https://editorial-service-template.netlify.app",
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 9,
+        item: {
+          "@type": "WebSite",
+          name: "Cozy Cafe Template",
+          description: "A warm, character-driven cafe website built to feel inviting, tactile, and easy to browse. Designed as a sample for food and hospitality clients.",
+          url: "https://cozy-cafe-template.netlify.app",
+        },
+      },
     ],
   };
 
