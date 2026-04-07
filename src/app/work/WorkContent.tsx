@@ -6,20 +6,6 @@ import { fadeUp, staggerDeep, viewportOnce } from "@/lib/animations";
 
 const PROJECTS = [
   {
-    category: "Creative Tech",
-    year: "2025",
-    title: "Claude Visualizer",
-    description:
-      "Real-time ambient visualizer for Claude Code. Tycho-inspired aesthetic with generative visuals that respond to AI activity. A tool for making the invisible visible.",
-    tech: ["WebGL", "Generative Art", "Real-Time"],
-    url: "https://github.com/wretcher207/claude-visualizer",
-    highlights: [
-      "Real-time generative visuals",
-      "Responds to Claude Code activity",
-      "Tycho-inspired ambient aesthetic",
-    ],
-  },
-  {
     category: "Web Application",
     year: "2026",
     title: "Aether",
@@ -31,6 +17,34 @@ const PROJECTS = [
       "AI-powered strain search and recommendations",
       "Full authentication and user accounts",
       "Database-driven strain profiles",
+    ],
+  },
+  {
+    category: "Spec Site",
+    year: "2026",
+    title: "GaleGrid",
+    description:
+      "A full B2B SaaS spec site for an AI workflow automation company. Built to demonstrate how to sell a technical product without losing people in the jargon — clean enterprise design, sharp copy, and a complete multi-page product presence.",
+    tech: ["Next.js", "Framer Motion", "Tailwind CSS", "SaaS Design"],
+    url: "https://galegrid-spec.netlify.app",
+    highlights: [
+      "Full multi-page SaaS site: product, solutions, about, contact",
+      "Enterprise design with video hero and animated metrics",
+      "Spec pitch — built on spec to show range",
+    ],
+  },
+  {
+    category: "Sample Site",
+    year: "2026",
+    title: "Cozy Cafe Template",
+    description:
+      "A warm, character-driven cafe website built to feel inviting, tactile, and easy to browse. Designed as a sample concept for food and hospitality clients who need charm without clutter.",
+    tech: ["Cafe", "Hospitality", "Responsive Design"],
+    url: "https://cozy-cafe-template.netlify.app",
+    highlights: [
+      "Cozy hospitality-focused design",
+      "Mobile-friendly menu and location flow",
+      "Strong atmosphere and customer-facing clarity",
     ],
   },
   {
@@ -48,58 +62,17 @@ const PROJECTS = [
     ],
   },
   {
-    category: "Audio Tool",
-    year: "2026",
-    title: "The Rhythm Apparatus",
+    category: "Creative Tech",
+    year: "2025",
+    title: "Claude Visualizer",
     description:
-      "Browser-based drum pattern generator built for metal. Over 43 grooves, MIDI export, and a tactile interface. Designed to break the repetitive loop of programmed drums.",
-    tech: ["Web Audio", "MIDI", "Generative", "React"],
+      "Real-time ambient visualizer for Claude Code. Tycho-inspired aesthetic with generative visuals that respond to AI activity. A tool for making the invisible visible.",
+    tech: ["WebGL", "Generative Art", "Real-Time"],
+    url: "https://github.com/wretcher207/claude-visualizer",
     highlights: [
-      "43+ drum grooves with variations",
-      "MIDI export for DAW integration",
-      "Generative engine — never the same pattern twice",
-    ],
-  },
-  {
-    category: "Audio / Music",
-    year: "Ongoing",
-    title: "Wretcher",
-    description:
-      "Solo extreme metal project — 7 EPs and counting. Writing, recording, engineering, mixing, mastering, and MIDI programming. All handled in-house. This is where the audio engineering chops get sharpened.",
-    url: "https://wretcher.bandcamp.com/music",
-    tech: ["REAPER", "Audio Engineering", "MIDI", "Mixing/Mastering"],
-    highlights: [
-      "7 EPs written, recorded, and produced solo",
-      "Full mixing and mastering pipeline",
-      "MIDI drum programming from scratch",
-    ],
-  },
-  {
-    category: "Small Business",
-    year: "2026",
-    title: "Freedom Painting",
-    description:
-      "An ultra-fast static site built as an unsolicited spec pitch. Sent it cold, won the client. Proof that showing beats telling every time.",
-    tech: ["Static HTML", "Performance", "Spec Pitch"],
-    url: "https://freedompainting.us/",
-    highlights: [
-      "Cold pitch that landed the client",
-      "Lightning-fast static build",
-      "Clean, professional design focused on trust signals",
-    ],
-  },
-  {
-    category: "Sample Site",
-    year: "2026",
-    title: "Restaurant Sample",
-    description:
-      "A sample restaurant website built to demonstrate clean layout, appetizing design, and mobile-friendly structure. A proof of concept for food service clients.",
-    tech: ["HTML", "CSS", "Responsive Design"],
-    url: "https://restaurant-sample-01.netlify.app/home_page/code.html",
-    highlights: [
-      "Clean, appetizing layout",
-      "Mobile-friendly design",
-      "Built as a demo for prospective clients",
+      "Real-time generative visuals",
+      "Responds to Claude Code activity",
+      "Tycho-inspired ambient aesthetic",
     ],
   },
   {
@@ -117,17 +90,58 @@ const PROJECTS = [
     ],
   },
   {
+    category: "Small Business",
+    year: "2026",
+    title: "Freedom Painting",
+    description:
+      "An ultra-fast static site built as an unsolicited spec pitch. Sent it cold, won the client. Proof that showing beats telling every time.",
+    tech: ["Static HTML", "Performance", "Spec Pitch"],
+    url: "https://freedompainting.us/",
+    highlights: [
+      "Cold pitch that landed the client",
+      "Lightning-fast static build",
+      "Clean, professional design focused on trust signals",
+    ],
+  },
+  {
+    category: "Audio Tool",
+    year: "2026",
+    title: "The Rhythm Apparatus",
+    description:
+      "Browser-based drum pattern generator built for metal. Over 43 grooves, MIDI export, and a tactile interface. Designed to break the repetitive loop of programmed drums.",
+    tech: ["Web Audio", "MIDI", "Generative", "React"],
+    highlights: [
+      "43+ drum grooves with variations",
+      "MIDI export for DAW integration",
+      "Generative engine — never the same pattern twice",
+    ],
+  },
+  {
     category: "Sample Site",
     year: "2026",
-    title: "Cozy Cafe Template",
+    title: "Restaurant Sample",
     description:
-      "A warm, character-driven cafe website built to feel inviting, tactile, and easy to browse. Designed as a sample concept for food and hospitality clients who need charm without clutter.",
-    tech: ["Cafe", "Hospitality", "Responsive Design"],
-    url: "https://cozy-cafe-template.netlify.app",
+      "A sample restaurant website built to demonstrate clean layout, appetizing design, and mobile-friendly structure. A proof of concept for food service clients.",
+    tech: ["HTML", "CSS", "Responsive Design"],
+    url: "https://restaurant-sample-01.netlify.app/home_page/code.html",
     highlights: [
-      "Cozy hospitality-focused design",
-      "Mobile-friendly menu and location flow",
-      "Strong atmosphere and customer-facing clarity",
+      "Clean, appetizing layout",
+      "Mobile-friendly design",
+      "Built as a demo for prospective clients",
+    ],
+  },
+  {
+    category: "Audio / Music",
+    year: "Ongoing",
+    title: "Wretcher",
+    description:
+      "Solo extreme metal project — 7 EPs and counting. Writing, recording, engineering, mixing, mastering, and MIDI programming. All handled in-house. This is where the audio engineering chops get sharpened.",
+    url: "https://wretcher.bandcamp.com/music",
+    tech: ["REAPER", "Audio Engineering", "MIDI", "Mixing/Mastering"],
+    highlights: [
+      "7 EPs written, recorded, and produced solo",
+      "Full mixing and mastering pipeline",
+      "MIDI drum programming from scratch",
     ],
   },
 ];
