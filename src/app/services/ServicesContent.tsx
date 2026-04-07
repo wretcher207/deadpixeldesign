@@ -8,7 +8,7 @@ import { fadeUp, scaleReveal, stagger, staggerDeep, viewportOnce } from "@/lib/a
 const WEB_PACKAGES = [
   {
     name: "Starter",
-    price: "$800–$1,000",
+    price: "$500–$800",
     details: [
       "3 to 5 pages, mobile friendly",
       "Basic SEO setup",
@@ -20,7 +20,7 @@ const WEB_PACKAGES = [
   },
   {
     name: "Standard",
-    price: "$1,700–$2,500",
+    price: "$1,000–$1,500",
     details: [
       "6 to 8 pages, mobile friendly",
       "Full SEO setup",
@@ -33,7 +33,7 @@ const WEB_PACKAGES = [
   },
   {
     name: "Premium",
-    price: "$3,500–$5,000",
+    price: "$1,500–$3,000",
     details: [
       "Full custom build",
       "Content strategy",
