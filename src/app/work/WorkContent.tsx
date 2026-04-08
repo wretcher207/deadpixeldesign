@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import PageShell from "@/components/layout/PageShell";
 import { fadeUp, staggerDeep, viewportOnce } from "@/lib/animations";
 
@@ -13,6 +14,7 @@ const PROJECTS = [
       "A full-stack cannabis strain encyclopedia powered by AI. Users search strains, get detailed profiles, and explore recommendations. Built with authentication, database, and intelligent search.",
     tech: ["Next.js", "Supabase", "AI Integration", "Full-Stack"],
     url: "https://loveaether.com/",
+    thumbnail: "/images/work/aether.webp",
     highlights: [
       "AI-powered strain search and recommendations",
       "Full authentication and user accounts",
@@ -27,6 +29,7 @@ const PROJECTS = [
       "A full B2B SaaS spec site for an AI workflow automation company. Built to demonstrate how to sell a technical product without losing people in the jargon — clean enterprise design, sharp copy, and a complete multi-page product presence.",
     tech: ["Next.js", "Framer Motion", "Tailwind CSS", "SaaS Design"],
     url: "https://galegrid-spec.netlify.app",
+    thumbnail: "/images/work/galegrid.webp",
     highlights: [
       "Full multi-page SaaS site: product, solutions, about, contact",
       "Enterprise design with video hero and animated metrics",
@@ -41,6 +44,7 @@ const PROJECTS = [
       "A warm, character-driven cafe website built to feel inviting, tactile, and easy to browse. Designed as a sample concept for food and hospitality clients who need charm without clutter.",
     tech: ["Cafe", "Hospitality", "Responsive Design"],
     url: "https://cozy-cafe-template.netlify.app",
+    thumbnail: "/images/work/cozy-cafe.webp",
     highlights: [
       "Cozy hospitality-focused design",
       "Mobile-friendly menu and location flow",
@@ -83,6 +87,7 @@ const PROJECTS = [
       "A refined editorial-style service website built around elegant typography, spacious composition, and a premium content-first presentation. Designed as a sample for service businesses that need authority without stiffness.",
     tech: ["Editorial Design", "Service Business", "Responsive UI"],
     url: "https://editorial-service-template.netlify.app",
+    thumbnail: "/images/work/editorial.webp",
     highlights: [
       "Editorial-inspired visual hierarchy",
       "Premium typography and spacing",
@@ -97,6 +102,7 @@ const PROJECTS = [
       "An ultra-fast static site built as an unsolicited spec pitch. Sent it cold, won the client. Proof that showing beats telling every time.",
     tech: ["Static HTML", "Performance", "Spec Pitch"],
     url: "https://freedompainting.us/",
+    thumbnail: "/images/work/freedom-painting.webp",
     highlights: [
       "Cold pitch that landed the client",
       "Lightning-fast static build",
@@ -124,6 +130,7 @@ const PROJECTS = [
       "A sample restaurant website built to demonstrate clean layout, appetizing design, and mobile-friendly structure. A proof of concept for food service clients.",
     tech: ["HTML", "CSS", "Responsive Design"],
     url: "https://restaurant-sample-01.netlify.app/home_page/code.html",
+    thumbnail: "/images/work/restaurant.webp",
     highlights: [
       "Clean, appetizing layout",
       "Mobile-friendly design",
@@ -195,105 +202,129 @@ export default function WorkContent() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              {/* Header row */}
-              <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
-                <span className="heading-section">
-                  {project.category}
-                </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.6rem",
-                    color: "var(--color-text-ghost)",
-                  }}
-                >
-                  {project.year}
-                </span>
-              </div>
-
-              <h2
-                className="heading-display mb-3"
-                style={{
-                  fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)",
-                  color: "var(--color-text-primary)",
-                }}
-              >
-                {project.url ? (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "inherit", textDecoration: "none" }}
-                    className="hover:underline"
-                  >
-                    {project.title}
-                    <span
-                      style={{
-                        fontSize: "0.7em",
-                        marginLeft: "0.5em",
-                        opacity: 0.4,
-                      }}
-                    >
-                      {"\u2197"}
-                    </span>
-                  </a>
-                ) : (
-                  project.title
+              <div className={`flex flex-col ${project.thumbnail ? "md:flex-row md:gap-6" : ""}`}>
+                {/* Thumbnail */}
+                {project.thumbnail && (
+                  <div className="relative w-full md:w-[280px] lg:w-[340px] shrink-0 mb-4 md:mb-0 overflow-hidden rounded" style={{ border: "1px solid rgba(212,168,83,0.08)" }}>
+                    <div className="relative aspect-[16/10] md:aspect-auto md:h-full">
+                      <Image
+                        src={project.thumbnail}
+                        alt={`${project.title} preview`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 340px"
+                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-0"
+                        style={{ background: "linear-gradient(135deg, rgba(3,3,8,0.3) 0%, transparent 60%)" }}
+                      />
+                    </div>
+                  </div>
                 )}
-              </h2>
 
-              <p className="body-text mb-4">{project.description}</p>
-
-              {/* Highlights */}
-              <ul
-                className="mb-4"
-                style={{
-                  listStyle: "none",
-                  padding: 0,
-                }}
-              >
-                {project.highlights.map((h) => (
-                  <li
-                    key={h}
-                    className="flex items-start gap-2 mb-1.5"
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "0.78rem",
-                      color: "var(--color-text-dim)",
-                      lineHeight: 1.6,
-                    }}
-                  >
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  {/* Header row */}
+                  <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
+                    <span className="heading-section">
+                      {project.category}
+                    </span>
                     <span
                       style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "0.6rem",
                         color: "var(--color-text-ghost)",
-                        marginTop: "0.15em",
                       }}
                     >
-                      &mdash;
+                      {project.year}
                     </span>
-                    {h}
-                  </li>
-                ))}
-              </ul>
+                  </div>
 
-              {/* Tech tags */}
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
+                  <h2
+                    className="heading-display mb-3"
                     style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.08em",
-                      color: "var(--color-text-dim)",
-                      padding: "4px 10px",
-                      border: "1px solid rgba(212,168,83,0.08)",
-                      textTransform: "uppercase",
+                      fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)",
+                      color: "var(--color-text-primary)",
                     }}
                   >
-                    {t}
-                  </span>
-                ))}
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "inherit", textDecoration: "none" }}
+                        className="hover:underline"
+                      >
+                        {project.title}
+                        <span
+                          style={{
+                            fontSize: "0.7em",
+                            marginLeft: "0.5em",
+                            opacity: 0.4,
+                          }}
+                        >
+                          {"\u2197"}
+                        </span>
+                      </a>
+                    ) : (
+                      project.title
+                    )}
+                  </h2>
+
+                  <p className="body-text mb-4">{project.description}</p>
+
+                  {/* Highlights */}
+                  <ul
+                    className="mb-4"
+                    style={{
+                      listStyle: "none",
+                      padding: 0,
+                    }}
+                  >
+                    {project.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="flex items-start gap-2 mb-1.5"
+                        style={{
+                          fontFamily: "var(--font-body)",
+                          fontSize: "0.78rem",
+                          color: "var(--color-text-dim)",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        <span
+                          style={{
+                            color: "var(--color-text-ghost)",
+                            marginTop: "0.15em",
+                          }}
+                        >
+                          &mdash;
+                        </span>
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tech tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        style={{
+                          fontFamily: "var(--font-body)",
+                          fontSize: "0.6rem",
+                          letterSpacing: "0.08em",
+                          color: "var(--color-text-dim)",
+                          padding: "4px 10px",
+                          border: "1px solid rgba(212,168,83,0.08)",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.article>
           ))}
