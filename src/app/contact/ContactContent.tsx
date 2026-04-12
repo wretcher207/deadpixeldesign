@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import PageShell from "@/components/layout/PageShell";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 
-const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/26768975/unqhe52/";
+const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_URL || "";
 
 const PROJECT_TYPES = [
   "New Website",
@@ -68,7 +68,7 @@ function BookingForm() {
 
   return (
     <form onSubmit={handleSubmit} className="card-cosmic">
-      <p className="heading-section mb-6">BOOK A PROJECT</p>
+      <h2 className="heading-section mb-6">BOOK A PROJECT</h2>
 
       <div className="space-y-5">
         {/* Name */}
@@ -152,6 +152,7 @@ function BookingForm() {
         <button
           type="submit"
           disabled={status === "sending"}
+          aria-busy={status === "sending"}
           className="btn-ghost"
           style={{
             width: "100%",
@@ -240,7 +241,7 @@ export default function ContactContent() {
         >
           {/* Direct contact */}
           <motion.div variants={fadeUp} className="card-cosmic">
-            <p className="heading-section mb-6">DIRECT LINE</p>
+            <h2 className="heading-section mb-6">DIRECT LINE</h2>
 
             {/* Phone */}
             <div className="mb-6">
@@ -306,7 +307,7 @@ export default function ContactContent() {
           <motion.div variants={fadeUp} className="space-y-8">
             {/* Social links */}
             <div className="card-cosmic">
-              <p className="heading-section mb-5">FIND US</p>
+              <h2 className="heading-section mb-5">FIND US</h2>
               <div className="space-y-3">
                 {SOCIALS.map((social) => (
                   <a
@@ -353,7 +354,7 @@ export default function ContactContent() {
 
             {/* Spotify Embed */}
             <div className="card-cosmic">
-              <p className="heading-section mb-4">LISTEN</p>
+              <h2 className="heading-section mb-4">LISTEN</h2>
               <iframe
                 style={{ borderRadius: 8 }}
                 src="https://open.spotify.com/embed/artist/3LVWQJO9cup6fLLP4tEmXj?utm_source=generator&theme=0"
