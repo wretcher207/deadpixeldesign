@@ -42,6 +42,13 @@ export const CHANNELS: Channel[] = [
     label: "CONTACT",
     description: "Let's talk.",
   },
+  {
+    id: 5,
+    name: "blog",
+    route: "/blog",
+    label: "BLOG",
+    description: "Thoughts on web design, audio, and AI.",
+  },
 ];
 
 export function getChannelByRoute(route: string): Channel | undefined {

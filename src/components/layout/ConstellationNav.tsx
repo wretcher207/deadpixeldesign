@@ -13,6 +13,7 @@ const STAR_POSITIONS: Record<string, { x: number; y: number }> = {
   "/services": { x: 74, y: 26 },
   "/about": { x: 18, y: 70 },
   "/contact": { x: 76, y: 68 },
+  "/blog": { x: 50, y: 50 },
 };
 
 /* ── Constellation connecting lines (pairs of routes) ── */
@@ -22,6 +23,8 @@ const CONSTELLATION_LINES: [string, string][] = [
   ["/services", "/contact"],
   ["/about", "/contact"],
   ["/work", "/contact"],
+  ["/blog", "/work"],
+  ["/blog", "/services"],
 ];
 
 /* ── Compact overlay positions for inner pages ── */
@@ -30,6 +33,7 @@ const OVERLAY_POSITIONS: Record<string, { x: number; y: number }> = {
   "/services": { x: 80, y: 20 },
   "/about": { x: 15, y: 75 },
   "/contact": { x: 85, y: 70 },
+  "/blog": { x: 50, y: 50 },
 };
 
 const OVERLAY_LINES: [string, string][] = [
@@ -37,6 +41,8 @@ const OVERLAY_LINES: [string, string][] = [
   ["/work", "/about"],
   ["/services", "/contact"],
   ["/about", "/contact"],
+  ["/blog", "/work"],
+  ["/blog", "/services"],
 ];
 
 /* ============================================
