@@ -35,7 +35,14 @@ function useVideoFadeLoop(ref: React.RefObject<HTMLVideoElement | null>, fadeDur
   }, [ref, tick]);
 }
 
-export default function HomeContent() {
+interface LatestPost {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+}
+
+export default function HomeContent({ latestPosts }: { latestPosts?: LatestPost[] }) {
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const desktopVideoRef = useRef<HTMLVideoElement>(null);
   useVideoFadeLoop(mobileVideoRef);
@@ -238,6 +245,89 @@ export default function HomeContent() {
                 </Link>
               ))}
             </motion.div>
+
+            {latestPosts && latestPosts.length > 0 && (
+              <motion.div
+                variants={fadeUp}
+                className="w-full mb-10"
+                style={{ maxWidth: "700px" }}
+              >
+                <p
+                  className="heading-section mb-5"
+                  style={{ textAlign: "left" }}
+                >
+                  LATEST
+                </p>
+                <div className="flex flex-col gap-4">
+                  {latestPosts.map((post) => (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      className="group card-cosmic block"
+                      style={{
+                        padding: "1.25rem 1.5rem",
+                        textDecoration: "none",
+                      }}
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-1">
+                        <h3
+                          style={{
+                            fontFamily: "var(--font-display)",
+                            fontSize: "1.05rem",
+                            fontWeight: 600,
+                            color: "var(--color-text-primary)",
+                            lineHeight: 1.3,
+                            letterSpacing: "-0.02em",
+                          }}
+                          className="group-hover:text-[var(--color-accent-gold)] transition-colors duration-200"
+                        >
+                          {post.title}
+                        </h3>
+                        <span
+                          style={{
+                            fontFamily: "var(--font-body)",
+                            fontSize: "0.65rem",
+                            color: "var(--color-text-dim)",
+                            letterSpacing: "0.1em",
+                            whiteSpace: "nowrap",
+                            marginTop: "0.2rem",
+                            flexShrink: 0,
+                          }}
+                        >
+                          {post.date}
+                        </span>
+                      </div>
+                      {post.excerpt && (
+                        <p
+                          style={{
+                            fontFamily: "var(--font-body)",
+                            fontSize: "0.9rem",
+                            color: "var(--color-text-dim)",
+                            lineHeight: 1.6,
+                          }}
+                        >
+                          {post.excerpt}
+                        </p>
+                      )}
+                    </Link>
+                  ))}
+                </div>
+                <div style={{ textAlign: "right", marginTop: "0.75rem" }}>
+                  <Link
+                    href="/blog"
+                    className="link-gold"
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    All posts →
+                  </Link>
+                </div>
+              </motion.div>
+            )}
 
             <motion.p
               variants={fadeUp}

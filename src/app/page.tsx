@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HomeContent from "./HomeContent";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { getLatestPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Dead Pixel Design — Web Design & Audio Engineering | Maine",
@@ -33,6 +34,10 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const latestPosts = getLatestPosts(3).map(({ slug, title, date, excerpt }) => ({
+    slug, title, date, excerpt,
+  }));
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -40,7 +45,7 @@ export default function HomePage() {
           { name: "Home", url: "https://deadpixeldesign.com" },
         ]}
       />
-      <HomeContent />
+      <HomeContent latestPosts={latestPosts} />
     </>
   );
 }
