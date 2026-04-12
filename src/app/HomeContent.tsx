@@ -120,6 +120,131 @@ export default function HomeContent({ latestPosts }: { latestPosts?: LatestPost[
         </motion.div>
       </section>
 
+      {/* === FEATURED ARTICLE — Immediately below hero === */}
+      {latestPosts && latestPosts.length > 0 && (
+        <section
+          className="relative z-10"
+          aria-label="Featured article"
+          style={{
+            background: "var(--color-bg-void)",
+            paddingTop: "clamp(3rem, 8vh, 6rem)",
+            paddingBottom: "clamp(3rem, 8vh, 6rem)",
+          }}
+        >
+          {/* Gradient bleed from hero */}
+          <div
+            className="absolute top-0 left-0 right-0 h-48 -translate-y-full pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to top, var(--color-bg-void) 10%, transparent)",
+            }}
+          />
+
+          <div className="content-container">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <p
+                className="heading-section mb-6"
+                style={{ textAlign: "center" }}
+              >
+                LATEST
+              </p>
+
+              {/* Featured article — the first/newest post */}
+              <Link
+                href={`/blog/${latestPosts[0].slug}`}
+                className="group block"
+                style={{
+                  textDecoration: "none",
+                  maxWidth: "800px",
+                  margin: "0 auto",
+                }}
+              >
+                <div
+                  style={{
+                    background: "rgba(14, 14, 26, 0.5)",
+                    border: "1px solid rgba(212, 168, 83, 0.06)",
+                    padding: "clamp(2rem, 4vw, 3.5rem)",
+                    transition: "border-color 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), background 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                  }}
+                  className="group-hover:!border-[rgba(212,168,83,0.15)] group-hover:!bg-[rgba(14,14,26,0.7)]"
+                >
+                  <h2
+                    className="heading-display mb-5 group-hover:text-[var(--color-accent-gold)]"
+                    style={{
+                      fontSize: "clamp(1.5rem, 4vw, 2.6rem)",
+                      color: "var(--color-text-primary)",
+                      lineHeight: 1.15,
+                      letterSpacing: "-0.03em",
+                      transition: "color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                    }}
+                  >
+                    {latestPosts[0].title}
+                  </h2>
+
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)",
+                      color: "var(--color-text-secondary)",
+                      lineHeight: 1.7,
+                      maxWidth: "600px",
+                      marginBottom: "2rem",
+                    }}
+                  >
+                    {latestPosts[0].excerpt}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-6">
+                    <span
+                      className="btn-ghost"
+                      style={{ pointerEvents: "none" }}
+                    >
+                      Read the full article
+                    </span>
+                    <time
+                      dateTime={latestPosts[0].date}
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "0.6rem",
+                        color: "var(--color-text-ghost)",
+                        letterSpacing: "0.1em",
+                      }}
+                    >
+                      {new Date(latestPosts[0].date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Secondary CTA */}
+              <div className="text-center mt-8">
+                <Link
+                  href="/contact"
+                  className="link-gold"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.15em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Or skip to booking a free consultation
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       {/* === BELOW THE FOLD — SEO Content === */}
       <section
         className="relative z-10 page-bottom-clearance"
@@ -129,132 +254,7 @@ export default function HomeContent({ latestPosts }: { latestPosts?: LatestPost[
           padding: "var(--spacing-section) 0",
         }}
       >
-        {/* Gradient transition from hero — taller for smoother flow */}
-        <div
-          className="absolute top-0 left-0 right-0 h-48 -translate-y-full pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, var(--color-bg-void) 10%, transparent)",
-          }}
-        />
-
         <div className="content-container" style={{ textAlign: "center" }}>
-          {/* Latest Articles — first thing visitors see below the fold */}
-          {latestPosts && latestPosts.length > 0 && (
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              variants={stagger}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                marginBottom: "var(--spacing-section)",
-              }}
-            >
-              <motion.p variants={fadeUp} className="heading-section mb-4">
-                LATEST
-              </motion.p>
-              <motion.h2
-                variants={fadeUp}
-                className="heading-display mb-8"
-                style={{
-                  fontSize: "clamp(1.3rem, 3.5vw, 2.2rem)",
-                  color: "var(--color-text-primary)",
-                  maxWidth: "600px",
-                }}
-              >
-                What we&apos;re thinking about.
-              </motion.h2>
-
-              <motion.div
-                variants={fadeUp}
-                className="w-full"
-                style={{ maxWidth: "700px" }}
-              >
-                <div className="flex flex-col gap-4">
-                  {latestPosts.map((post) => (
-                    <Link
-                      key={post.slug}
-                      href={`/blog/${post.slug}`}
-                      className="group card-cosmic block"
-                      style={{
-                        padding: "1.5rem",
-                        textDecoration: "none",
-                        textAlign: "left",
-                      }}
-                    >
-                      <div className="flex items-start justify-between gap-4 mb-2">
-                        <h3
-                          style={{
-                            fontFamily: "var(--font-display)",
-                            fontSize: "clamp(1rem, 2.5vw, 1.3rem)",
-                            fontWeight: 600,
-                            color: "var(--color-text-primary)",
-                            lineHeight: 1.3,
-                            letterSpacing: "-0.02em",
-                          }}
-                          className="group-hover:text-[var(--color-accent-gold)] transition-colors duration-200"
-                        >
-                          {post.title}
-                        </h3>
-                        <time
-                          dateTime={post.date}
-                          style={{
-                            fontFamily: "var(--font-body)",
-                            fontSize: "0.6rem",
-                            color: "var(--color-text-ghost)",
-                            letterSpacing: "0.1em",
-                            whiteSpace: "nowrap",
-                            marginTop: "0.3rem",
-                            flexShrink: 0,
-                          }}
-                        >
-                          {new Date(post.date).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric",
-                          })}
-                        </time>
-                      </div>
-                      <p
-                        style={{
-                          fontFamily: "var(--font-body)",
-                          fontSize: "0.85rem",
-                          color: "var(--color-text-dim)",
-                          lineHeight: 1.6,
-                        }}
-                      >
-                        {post.excerpt}
-                      </p>
-                    </Link>
-                  ))}
-                </div>
-
-                <div
-                  className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
-                >
-                  <Link href="/blog" className="btn-ghost">
-                    Read more articles
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="link-gold"
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "0.7rem",
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Book a free consultation
-                  </Link>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-
           <motion.div
             initial="hidden"
             whileInView="visible"
