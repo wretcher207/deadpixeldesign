@@ -26,6 +26,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Work | Dead Pixel Design",
+    description:
+      "Custom websites, audio tools, and creative tech — see what we've built.",
+    images: ["/images/og-image.webp"],
+  },
   alternates: {
     canonical: "https://deadpixeldesign.com/work",
   },

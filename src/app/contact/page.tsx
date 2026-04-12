@@ -25,6 +25,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact | Dead Pixel Design",
+    description:
+      "Call or message for a free consultation on web design or audio engineering.",
+    images: ["/images/og-image.webp"],
+  },
   alternates: {
     canonical: "https://deadpixeldesign.com/contact",
   },

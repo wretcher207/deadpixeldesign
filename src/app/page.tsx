@@ -3,7 +3,7 @@ import HomeContent from "./HomeContent";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Dead Pixel Design — Web Design, Audio Engineering & Creative Technology | Maine",
+  title: "Dead Pixel Design — Web Design & Audio Engineering | Maine",
   description:
     "Web design, audio engineering, mixing, mastering, MIDI programming, and AI automation from Maine. Custom websites for small businesses and musicians. Free consultation.",
   openGraph: {

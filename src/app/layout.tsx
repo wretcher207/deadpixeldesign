@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant, IBM_Plex_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ConstellationNav from "@/components/layout/ConstellationNav";
 import Footer from "@/components/layout/Footer";
@@ -26,7 +27,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://deadpixeldesign.com"),
   title: {
-    default: "Dead Pixel Design — Web Design, Audio Engineering & Creative Technology | Maine",
+    default: "Dead Pixel Design — Web Design & Audio Engineering | Maine",
     template: "%s | Dead Pixel Design",
   },
   description:
@@ -71,6 +72,10 @@ export const metadata: Metadata = {
       "Custom web design, audio engineering, and AI systems from Maine.",
     images: ["/images/og-image.webp"],
   },
+  other: {
+    "geo.region": "US-ME",
+    "geo.placename": "Houlton, Maine",
+  },
   robots: {
     index: true,
     follow: true,
@@ -112,9 +117,21 @@ export default function RootLayout({
         <OrganizationJsonLd />
       </head>
       <body>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:text-sm"
+          style={{
+            background: "var(--color-bg-primary)",
+            color: "var(--color-accent-gold)",
+            border: "1px solid var(--color-accent-gold)",
+          }}
+        >
+          Skip to content
+        </a>
         <ConstellationNav />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

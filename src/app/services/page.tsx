@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd, ServicesPageJsonLd } from "@/components/seo/JsonLd";
 export const metadata: Metadata = {
   title: "Services & Pricing — Web Design and Audio Engineering | Dead Pixel Design",
   description:
-    "Web design packages starting at $800 and audio engineering services starting at $30. Dead Pixel Design is based in Maine and works with clients remotely.",
+    "Web design packages starting at $500 and audio engineering services starting at $25. Dead Pixel Design is based in Maine and works with clients remotely.",
   keywords: [
     "web design pricing Maine",
     "audio engineering rates",
@@ -26,6 +26,13 @@ export const metadata: Metadata = {
         alt: "Dead Pixel Design — Services & Pricing",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services & Pricing | Dead Pixel Design",
+    description:
+      "Web design and audio engineering out of Maine. Clear pricing, no surprises.",
+    images: ["/images/og-image.webp"],
   },
   alternates: {
     canonical: "https://deadpixeldesign.com/services",

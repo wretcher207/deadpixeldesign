@@ -48,6 +48,8 @@ export function LocalBusinessJsonLd({
       addressRegion: address.state,
       addressCountry: address.country,
     },
+    priceRange: "$$",
+    image: "https://deadpixeldesign.com/images/og-image.webp",
     areaServed: [
       { "@type": "State", name: "Maine" },
       { "@type": "Country", name: "United States" },
@@ -121,6 +123,7 @@ export function OrganizationJsonLd() {
     telephone: "+12076948691",
     description:
       "Web design, audio engineering, and creative technology studio based in Maine.",
+    foundingDate: "2025",
     foundingLocation: {
       "@type": "Place",
       address: {
@@ -244,8 +247,8 @@ export function ServicesPageJsonLd() {
             description: "3 to 5 pages, mobile friendly, basic SEO setup, contact form, Google Business Profile setup, 1 revision round. Good for solo tradespeople, small local businesses, first time website owners.",
             priceSpecification: {
               "@type": "PriceSpecification",
-              minPrice: 800,
-              maxPrice: 1000,
+              minPrice: 500,
+              maxPrice: 800,
               priceCurrency: "USD",
             },
           },
@@ -255,8 +258,8 @@ export function ServicesPageJsonLd() {
             description: "6 to 8 pages, mobile friendly, full SEO setup, copywriting help, photo optimization, Google Analytics, 2 revision rounds. Good for dental practices, contractors, auto repair, tourism businesses.",
             priceSpecification: {
               "@type": "PriceSpecification",
-              minPrice: 1700,
-              maxPrice: 2500,
+              minPrice: 1000,
+              maxPrice: 1500,
               priceCurrency: "USD",
             },
           },
@@ -266,8 +269,8 @@ export function ServicesPageJsonLd() {
             description: "Full custom build, content strategy, SEO setup and implementation, 60 days post-launch support, unlimited revisions. For established businesses ready for a new site.",
             priceSpecification: {
               "@type": "PriceSpecification",
-              minPrice: 3500,
-              maxPrice: 5000,
+              minPrice: 1500,
+              maxPrice: 3000,
               priceCurrency: "USD",
             },
           },
@@ -402,6 +405,56 @@ export function PersonJsonLd() {
       "https://www.youtube.com/@wretcher207",
       "https://wretcher.bandcamp.com/music",
     ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+interface ArticleJsonLdProps {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+}
+
+export function ArticleJsonLd({
+  title,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  author = "David",
+}: ArticleJsonLdProps) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    url,
+    datePublished,
+    dateModified: dateModified || datePublished,
+    author: {
+      "@type": "Person",
+      name: author,
+      url: "https://deadpixeldesign.com/about",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Dead Pixel Design",
+      url: "https://deadpixeldesign.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://deadpixeldesign.com/images/favicon-512.png",
+      },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 
   return (

@@ -26,6 +26,12 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "About | Dead Pixel Design",
+    description: "Who's behind the static — and why it matters.",
+    images: ["/images/og-image.webp"],
+  },
   alternates: {
     canonical: "https://deadpixeldesign.com/about",
   },
