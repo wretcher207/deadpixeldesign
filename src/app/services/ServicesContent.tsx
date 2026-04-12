@@ -152,12 +152,12 @@ function PackageCard({
         transition: { duration: 0.3 },
       }}
     >
-      <p
+      <h3
         className="heading-section mb-2"
         style={{ fontSize: "0.6rem", letterSpacing: "0.12em" }}
       >
         {name.toUpperCase()}
-      </p>
+      </h3>
 
       <p
         className="heading-display mb-4"
@@ -227,17 +227,14 @@ export default function ServicesContent() {
 
         {/* Web Design */}
         <div className="mb-20">
-          <p className="heading-section mb-2">WEB DESIGN</p>
+          <h2 className="heading-section mb-2">WEB DESIGN</h2>
           <p className="body-text mb-8" style={{ maxWidth: "480px" }}>
             A good website should be easy to find and easy to use. We handle the
             technical side so you don&apos;t have to.
           </p>
 
           <motion.div
-            className="grid grid-cols-1 gap-6"
-            style={{
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(260px, 100%), 1fr))",
-            }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
             variants={staggerDeep}
             initial="hidden"
             whileInView="visible"
@@ -306,17 +303,14 @@ export default function ServicesContent() {
 
         {/* Audio Engineering */}
         <div className="mb-20">
-          <p className="heading-section mb-2">AUDIO ENGINEERING</p>
+          <h2 className="heading-section mb-2">AUDIO ENGINEERING</h2>
           <p className="body-text mb-8" style={{ maxWidth: "480px" }}>
             All remote. We work with artists, podcasters, and home studio
             musicians wherever you are.
           </p>
 
           <motion.div
-            className="grid grid-cols-1 gap-6"
-            style={{
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(240px, 100%), 1fr))",
-            }}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
             variants={staggerDeep}
             initial="hidden"
             whileInView="visible"

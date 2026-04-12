@@ -315,11 +315,12 @@ export default function ContactContent() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between group"
+                    className="flex items-center justify-between gap-3 group"
                     style={{
                       textDecoration: "none",
-                      padding: "8px 0",
+                      padding: "10px 0",
                       borderBottom: "1px solid rgba(212,168,83,0.03)",
+                      minHeight: "44px",
                     }}
                   >
                     <span
@@ -331,6 +332,7 @@ export default function ContactContent() {
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
                         transition: "color var(--duration-base) var(--ease-smooth)",
+                        flexShrink: 0,
                       }}
                       className="group-hover:!text-[var(--color-accent-gold)]"
                     >
@@ -342,6 +344,10 @@ export default function ContactContent() {
                         fontSize: "0.65rem",
                         color: "var(--color-text-ghost)",
                         transition: "color var(--duration-base) var(--ease-smooth)",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        minWidth: 0,
                       }}
                       className="group-hover:!text-[var(--color-text-dim)]"
                     >
@@ -375,8 +381,7 @@ export default function ContactContent() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mb-16"
-          style={{ maxWidth: "600px", margin: "0 auto" }}
+          style={{ maxWidth: "600px", margin: "0 auto 4rem" }}
         >
           <BookingForm />
         </motion.div>

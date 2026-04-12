@@ -88,7 +88,7 @@ export default function PageShell({ children, backgroundVideo, backgroundPoster 
 
       {/* Page Content */}
       <div
-        className="relative z-10"
+        className="relative z-10 page-bottom-clearance"
         style={{
           background: showVideo ? "transparent" : "var(--color-bg-void)",
           paddingBottom: "var(--spacing-section)",

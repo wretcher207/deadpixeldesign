@@ -44,7 +44,7 @@ export default function HomeContent() {
   return (
     <>
       {/* === HERO — Full Viewport Video === */}
-      <section className="relative w-full h-[100dvh] overflow-hidden bg-[var(--color-bg-void)]">
+      <section className="relative w-full h-[100dvh] overflow-hidden bg-[var(--color-bg-void)]" aria-label="Hero">
         {/* Mobile video */}
         <video
           ref={mobileVideoRef}
@@ -53,6 +53,7 @@ export default function HomeContent() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover md:hidden"
+          poster="/videos/bg-1-poster.webp"
         >
           <source src="/videos/black-hole.mp4" type="video/mp4" />
         </video>
@@ -65,6 +66,7 @@ export default function HomeContent() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover hidden md:block"
+          poster="/videos/bg-1-poster.webp"
         >
           <source src="/videos/black-hole-desktop.mp4" type="video/mp4" />
         </video>
@@ -113,7 +115,8 @@ export default function HomeContent() {
 
       {/* === BELOW THE FOLD — SEO Content === */}
       <section
-        className="relative z-10"
+        className="relative z-10 page-bottom-clearance"
+        aria-label="About Dead Pixel Design"
         style={{
           background: "var(--color-bg-void)",
           padding: "var(--spacing-section) 0",
@@ -143,7 +146,7 @@ export default function HomeContent() {
             <motion.p variants={fadeUp} className="heading-section mb-4">
               ORIGIN POINT
             </motion.p>
-            <motion.h2
+            <motion.h1
               variants={fadeUp}
               className="heading-display mb-6"
               style={{
@@ -153,7 +156,7 @@ export default function HomeContent() {
               }}
             >
               We build systems that stay with you.
-            </motion.h2>
+            </motion.h1>
             <motion.p
               variants={fadeUp}
               className="body-text mb-4"
@@ -210,8 +213,8 @@ export default function HomeContent() {
                   href: "/services",
                 },
               ].map((item) => (
-                <Link key={item.label} href={item.href} className="group block">
-                  <h3
+                <Link key={item.label} href={item.href} className="group block" style={{ minHeight: "44px" }}>
+                  <h2
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "1.1rem",
@@ -221,7 +224,7 @@ export default function HomeContent() {
                     }}
                   >
                     {item.label}
-                  </h3>
+                  </h2>
                   <p
                     style={{
                       fontFamily: "var(--font-body)",

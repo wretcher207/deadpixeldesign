@@ -127,7 +127,7 @@ function DesktopConstellation({
   onNav: (route: string) => void;
 }) {
   return (
-    <div className="absolute inset-0 z-20 hidden md:block pointer-events-none">
+    <nav className="absolute inset-0 z-20 hidden md:block pointer-events-none" aria-label="Site navigation">
       {/* SVG lines */}
       <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
         <defs>
@@ -223,7 +223,7 @@ function DesktopConstellation({
           </motion.button>
         );
       })}
-    </div>
+    </nav>
   );
 }
 
@@ -394,12 +394,13 @@ function MobileNav({
   onNav: (route: string) => void;
 }) {
   return (
-    <div className="md:hidden">
+    <nav className="md:hidden" aria-label="Mobile navigation">
       {/* Toggle button — bottom center */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[101] cursor-pointer"
+        className="fixed left-1/2 -translate-x-1/2 z-[101] cursor-pointer"
         style={{
+          bottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))",
           width: "48px",
           height: "48px",
           borderRadius: "50%",
@@ -409,6 +410,7 @@ function MobileNav({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          touchAction: "manipulation",
         }}
         aria-label={open ? "Close navigation" : "Open navigation"}
         aria-expanded={open}
@@ -454,6 +456,12 @@ function MobileNav({
                   ? "var(--color-accent-gold)"
                   : "var(--color-text-dim)",
                 marginBottom: "1rem",
+                minHeight: "44px",
+                minWidth: "44px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                touchAction: "manipulation",
               }}
             >
               HOME
@@ -470,6 +478,7 @@ function MobileNav({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 + i * 0.08 }}
                   className="cursor-pointer flex flex-col items-center gap-2"
+                  style={{ minHeight: "44px", minWidth: "80px", justifyContent: "center", touchAction: "manipulation" }}
                 >
                   {/* Star dot */}
                   <div
@@ -505,6 +514,6 @@ function MobileNav({
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </nav>
   );
 }

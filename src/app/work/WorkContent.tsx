@@ -202,16 +202,17 @@ export default function WorkContent() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              <div className={`flex flex-col ${project.thumbnail ? "md:flex-row md:gap-6" : ""}`}>
+              <div className={`flex flex-col ${project.thumbnail ? "md:flex-row md:gap-6 md:items-stretch" : ""}`}>
                 {/* Thumbnail */}
                 {project.thumbnail && (
-                  <div className="relative w-full md:w-[280px] lg:w-[340px] shrink-0 mb-4 md:mb-0 overflow-hidden rounded" style={{ border: "1px solid rgba(212,168,83,0.08)" }}>
-                    <div className="relative aspect-[16/10] md:aspect-auto md:h-full">
+                  <div className="relative w-full md:w-[260px] lg:w-[320px] shrink-0 mb-4 md:mb-0 overflow-hidden rounded" style={{ border: "1px solid rgba(212,168,83,0.08)", minHeight: "0" }}>
+                    <div className="relative aspect-[16/10] md:h-full md:min-h-[180px]" style={{ position: "relative" }}>
                       <Image
                         src={project.thumbnail}
                         alt={`${project.title} preview`}
                         fill
-                        sizes="(max-width: 768px) 100vw, 340px"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 320px"
                         className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       />
                       <div
@@ -271,7 +272,7 @@ export default function WorkContent() {
                     )}
                   </h2>
 
-                  <p className="body-text mb-4">{project.description}</p>
+                  <p className="body-text mb-4" style={{ overflowWrap: "break-word", wordBreak: "break-word" }}>{project.description}</p>
 
                   {/* Highlights */}
                   <ul

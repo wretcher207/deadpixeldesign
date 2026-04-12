@@ -28,7 +28,7 @@ export default function AboutContent() {
         >
           {/* Main story */}
           <motion.div variants={fadeUp}>
-            <div className="body-text space-y-5" style={{ maxWidth: "600px" }}>
+            <div className="body-text space-y-5" style={{ maxWidth: "600px", overflowWrap: "break-word" }}>
               <p>
                 Dead Pixel Design is a one-person studio based in Maine. I&apos;m
                 David — I build websites, engineer audio, and make tools that
@@ -71,7 +71,7 @@ export default function AboutContent() {
                 padding: "1.5rem",
               }}
             >
-              <p className="heading-section mb-4">THE SPECS</p>
+              <h2 className="heading-section mb-4">THE SPECS</h2>
 
               {[
                 { label: "Location", value: "Maine, USA" },
@@ -116,7 +116,7 @@ export default function AboutContent() {
                 padding: "1.5rem",
               }}
             >
-              <p className="heading-section mb-4">THE PHILOSOPHY</p>
+              <h2 className="heading-section mb-4">THE PHILOSOPHY</h2>
               {[
                 "Show, don't pitch.",
                 "Build it right the first time.",

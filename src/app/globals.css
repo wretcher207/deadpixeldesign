@@ -162,6 +162,19 @@ body {
   padding: 0 var(--spacing-content);
 }
 
+/* Prevent horizontal scroll at all breakpoints */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Mobile nav toggle button clearance — prevent content overlap at bottom */
+@media (max-width: 767px) {
+  .page-bottom-clearance {
+    padding-bottom: 6rem !important;
+  }
+}
+
 /* ============================================
    INTERACTIVE UTILITIES
    ============================================ */
