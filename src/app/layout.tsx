@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ConstellationNav from "@/components/layout/ConstellationNav";
 import Footer from "@/components/layout/Footer";
+import ChatProvider from "@/components/chat/ChatProvider";
+import ChatWidget from "@/components/chat/ChatWidget";
 import {
   LocalBusinessJsonLd,
   WebSiteJsonLd,
@@ -117,20 +119,23 @@ export default function RootLayout({
         <OrganizationJsonLd />
       </head>
       <body>
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:text-sm"
-          style={{
-            background: "var(--color-bg-primary)",
-            color: "var(--color-accent-gold)",
-            border: "1px solid var(--color-accent-gold)",
-          }}
-        >
-          Skip to content
-        </a>
-        <ConstellationNav />
-        <main id="main-content" className="min-h-screen">{children}</main>
-        <Footer />
+        <ChatProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:text-sm"
+            style={{
+              background: "var(--color-bg-primary)",
+              color: "var(--color-accent-gold)",
+              border: "1px solid var(--color-accent-gold)",
+            }}
+          >
+            Skip to content
+          </a>
+          <ConstellationNav />
+          <main id="main-content" className="min-h-screen">{children}</main>
+          <Footer />
+          <ChatWidget />
+        </ChatProvider>
         <Analytics />
       </body>
     </html>

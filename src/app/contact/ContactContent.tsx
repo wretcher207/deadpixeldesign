@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import PageShell from "@/components/layout/PageShell";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
+import ChatEmbed from "@/components/chat/ChatEmbed";
 
 const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_URL || "";
 
@@ -384,6 +385,18 @@ export default function ContactContent() {
           style={{ maxWidth: "600px", margin: "0 auto 4rem" }}
         >
           <BookingForm />
+        </motion.div>
+
+        {/* Chat Embed */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="mb-16"
+          style={{ maxWidth: "600px", margin: "0 auto" }}
+        >
+          <ChatEmbed />
         </motion.div>
 
         {/* Bottom CTA */}
