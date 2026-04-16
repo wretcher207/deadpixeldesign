@@ -6,8 +6,6 @@ import PageShell from "@/components/layout/PageShell";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 import ChatEmbed from "@/components/chat/ChatEmbed";
 
-const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_URL || "";
-
 const PROJECT_TYPES = [
   "New Website",
   "Redesign",
@@ -22,6 +20,7 @@ function BookingForm() {
     phone: "",
     projectType: "",
     details: "",
+    _trap: "", // honeypot — never shown to humans
   });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
@@ -36,16 +35,14 @@ function BookingForm() {
     setStatus("sending");
 
     try {
-      await fetch(WEBHOOK_URL, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: JSON.stringify({
-          ...form,
-          date: new Date().toLocaleString("en-US", { timeZone: "America/New_York" }),
-        }),
-        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
       });
+      if (!res.ok) throw new Error("Bad response");
       setStatus("sent");
-      setForm({ name: "", email: "", phone: "", projectType: "", details: "" });
+      setForm({ name: "", email: "", phone: "", projectType: "", details: "", _trap: "" });
     } catch {
       setStatus("error");
     }
@@ -146,6 +143,20 @@ function BookingForm() {
             onChange={handleChange}
             className="input-cosmic"
             style={{ resize: "vertical" }}
+          />
+        </div>
+
+        {/* Honeypot — hidden from humans, bots fill it in */}
+        <div style={{ position: "absolute", left: "-9999px", visibility: "hidden" }} aria-hidden="true">
+          <label htmlFor="_trap">Leave this blank</label>
+          <input
+            id="_trap"
+            name="_trap"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={form._trap}
+            onChange={handleChange}
           />
         </div>
 
